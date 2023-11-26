@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using JetBrains.Annotations;
 using main.entity.Card_Management;
 using main.entity.Card_Management.Card_Data;
+using main.repository.Card_Management.Deck_Definition;
 using UnityEngine.Assertions;
 
 namespace main.service.Card_Management
@@ -16,29 +18,25 @@ namespace main.service.Card_Management
         /// <summary>
         ///     The card pool entity containing discovered / available cards
         /// </summary>
-        private readonly CardPool _cardPool = new();
-
-        /// <summary>
-        ///     Creates the singleton instance
-        /// </summary>
-        public CardPoolService()
+        private readonly CardPool cardPool;
+        private readonly DeckDefinitionRepository deckDefinitionRepository;
+        private readonly StarterDeck starterDeck;
+        
+        public CardPoolService(CardPool cardPool, DeckDefinitionRepository deckDefinitionRepository, StarterDeck starterDeck)
         {
-            Instance = this;
-            LogInfo("Successfully set the CardPoolService's singleton instance");
+            this.cardPool = cardPool;
+            this.deckDefinitionRepository = deckDefinitionRepository;
+            this.starterDeck = starterDeck;
+            SetCardPool();
         }
-
-        /// <summary>
-        ///     The instance of the service singleton
-        /// </summary>
-        public static CardPoolService Instance { get; private set; }
-
+        
         /// <summary>
         ///     Adds a non-null card to the pool of discovered cards
         /// </summary>
         /// <param name="cardToAdd">The non-null that should be added to the pool</param>
         public void AddCard([NotNull] Card cardToAdd)
         {
-            _cardPool.Pool.Add(cardToAdd);
+            cardPool.Cards.Add(cardToAdd);
             LogInfo($"Added card '{cardToAdd}' to the card pool");
         }
 
@@ -48,7 +46,7 @@ namespace main.service.Card_Management
         /// <param name="cardToRemove">The non-null card reference to remove</param>
         public void RemoveCard([NotNull] Card cardToRemove)
         {
-            var refExisted = _cardPool.Pool.Remove(cardToRemove);
+            var refExisted = cardPool.Cards.Remove(cardToRemove);
             Assert.IsTrue(refExisted, "Trying to remove a card from the card pool, which does not exist there");
             LogInfo($"Removed card '{cardToRemove}' from the card pool");
         }
@@ -59,7 +57,7 @@ namespace main.service.Card_Management
         /// <returns>a copy of the card pool list</returns>
         public List<Card> ToList()
         {
-            return new List<Card>(_cardPool.Pool);
+            return new List<Card>(cardPool.Cards);
         }
 
         /// <summary>
@@ -68,7 +66,21 @@ namespace main.service.Card_Management
         /// <returns>The amount of cards as an integer</returns>
         public int Size()
         {
-            return _cardPool.Pool.Count;
+            return cardPool.Cards.Count;
+        }
+
+        private void SetCardPool()
+        {
+            var deckDefinition = deckDefinitionRepository.LoadDeckDefinition();
+            
+            foreach (var cardCopies in deckDefinition.CardCopiesList)
+            {
+                var copiesInStarterDeck = starterDeck.Cards.FindAll(card => card.Equals(cardCopies.Card));
+
+                var copiesToAddToPool = cardCopies.NumberOfCopies - copiesInStarterDeck.Count;
+                
+                cardPool.Cards.AddRange(Enumerable.Repeat(cardCopies.Card, copiesToAddToPool));
+            }
         }
     }
 }

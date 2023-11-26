@@ -13,6 +13,22 @@ namespace main.entity.Card_Management
     public class CardPile
     {
         /// <summary>
+        ///     The non-null stack containing the cards of the pile.
+        ///     The pile can only be accessed, but not rewritten.
+        ///     A new empty stack is created automatically.
+        /// </summary>
+        /// <returns>The non-null stack containing all cards in the pile</returns>
+        public Stack<Card> Pile { get; } = new();
+        
+        /// <summary>
+        ///     Creates a new empty pile
+        /// </summary>
+        public CardPile()
+        {
+            
+        }
+        
+        /// <summary>
         ///     Provides a way to create a new card pile and instantly fill it with a set amount of cards
         /// </summary>
         /// <param name="cardsToFill">The non-null, non-empty list of cards to fill it with</param>
@@ -31,20 +47,5 @@ namespace main.entity.Card_Management
             else
                 cardsToFill.ForEach(Pile.Push);
         }
-
-        /// <summary>
-        ///     Creates a new empty pile
-        /// </summary>
-        public CardPile()
-        {
-        }
-
-        /// <summary>
-        ///     The non-null stack containing the cards of the pile.
-        ///     The pile can only be accessed, but not rewritten.
-        ///     A new empty stack is created automatically.
-        /// </summary>
-        /// <returns>The non-null stack containing all cards in the pile</returns>
-        public Stack<Card> Pile { get; } = new();
     }
 }

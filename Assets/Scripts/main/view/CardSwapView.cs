@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Zenject;
 
 namespace main.view
 {
@@ -26,11 +27,26 @@ namespace main.view
         private List<Card> _cardsThatCanBeRemovedFromDeck, _cardsThatCanBeAddedToDeck;
         private Card _selectedCardToRemove, _selectedCardToAdd;
 
+        private CardSwapService cardSwapService;
+        
+        [Inject]
+        public void Construct(CardSwapService cardSwapService)
+        {
+            this.cardSwapService = cardSwapService;
+        }
+
+        private void OnEnable()
+        {
+            cardSwapService.OnCardSwapOptions.AddListener(Render);
+        }
+
+        private void OnDisable()
+        {
+            cardSwapService.OnCardSwapOptions.RemoveListener(Render);
+        }
 
         private void Start()
         {
-            GameService.Instance.OnCardSwap.AddListener(Render);
-
             _container.SetActive(false);
             _deckSelectionContainer.SetActive(false);
             _cardOfferContainer.SetActive(false);
@@ -75,7 +91,7 @@ namespace main.view
             _cardOfferContainer.SetActive(false);
             _container.SetActive(false);
 
-            GameService.Instance.RegisterCardSwapSelections(_selectedCardToRemove, _selectedCardToAdd);
+            cardSwapService.RegisterCardSwapSelections(_selectedCardToRemove, _selectedCardToAdd);
         }
 
         public void SelectCardToRemove(int index)

@@ -11,18 +11,17 @@ namespace main.entity.Card_Management
     public class PlayerHand
     {
         /// <summary>
-        ///     Creates a new empty list of hand cards when instantiated
-        /// </summary>
-        public PlayerHand()
-        {
-            HandCards = new List<Card>();
-        }
-
-        /// <summary>
         ///     The non-null list of hand cards.
         ///     Cannot be set manually.
         /// </summary>
         /// <value>The current list of all cards the player holds in their hand</value>
-        public List<Card> HandCards { private set; get; }
+        public List<Card> HandCards { get; } = new();
+        
+        public int DrawAmount { get; set; }
+
+        public PlayerHand(int drawAmount)
+        {
+            DrawAmount = drawAmount;
+        }
     }
 }

@@ -1,18 +1,18 @@
 using main.entity.Card_Management.Deck_Definition;
+using main.infrastructure;
 using main.repository;
 using main.repository.Card_Management.Deck_Definition;
 using NUnit.Framework;
+using UnityEngine.Localization.Settings;
 
 namespace test.EditMode.integration.main.repository.Card_Management.Deck_Definition
 {
     [TestFixture]
     public class ResourceDeckDefinitionRepositoryTest
     {
-        // If other languages start being supported, this class should check each language's path
-        private const string StarterDeckDefinitionResourcePath = "English(en)/Starter Deck";
-        private const string CardPoolDeckDefinitionResourcePath = "English(en)/Card Pool";
+        private readonly LocalizationSettingsWrapper localizationSettingsWrapper = new();
         
-        private ResourceDeckDefinitionRepository repository;
+        private DeckDefinitionRepository repository;
         
         [TestFixture]
         public class LoadDeckDefinitionTest : ResourceDeckDefinitionRepositoryTest
@@ -20,29 +20,45 @@ namespace test.EditMode.integration.main.repository.Card_Management.Deck_Definit
             [Test]
             public void VerifySingleStarterDeckDefinitionResourceFound()
             {
-                var resourceLoader = new ResourceLoader<StarterDeckDefinition>(StarterDeckDefinitionResourcePath);
+                Assert.IsNotEmpty(LocalizationSettings.AvailableLocales.Locales, 
+                    "There should be at least one available locale");
                 
-                repository = new ResourceDeckDefinitionRepository(resourceLoader);
+                foreach (var locale in LocalizationSettings.AvailableLocales.Locales)
+                {
+                    LocalizationSettings.SelectedLocale = locale;
+                    
+                    var resourceLoader = new ResourceLoader<StarterDeckDefinition>(localizationSettingsWrapper, ResourcePath.StarterDeck);
                 
-                var result = repository.LoadDeckDefinition();
+                    repository = new DeckDefinitionRepository(resourceLoader);
+                
+                    var result = repository.LoadDeckDefinition();
             
-                Assert.NotNull(result);
+                    Assert.NotNull(result);
                 
-                Assert.That(result, Is.TypeOf<StarterDeckDefinition>());
+                    Assert.That(result, Is.TypeOf<StarterDeckDefinition>());
+                }
             }
         
             [Test]
             public void VerifySingleCardPoolDeckDefinitionResourceFound()
             {
-                var resourceLoader = new ResourceLoader<CardPoolDeckDefinition>(CardPoolDeckDefinitionResourcePath);
+                Assert.IsNotEmpty(LocalizationSettings.AvailableLocales.Locales, 
+                    "There should be at least one available locale");
+
+                foreach (var locale in LocalizationSettings.AvailableLocales.Locales)
+                {
+                    LocalizationSettings.SelectedLocale = locale;
+                    
+                    var resourceLoader = new ResourceLoader<CardPoolDeckDefinition>(localizationSettingsWrapper, ResourcePath.CardPool);
                 
-                repository = new ResourceDeckDefinitionRepository(resourceLoader);
+                    repository = new DeckDefinitionRepository(resourceLoader);
                 
-                var result = repository.LoadDeckDefinition();
+                    var result = repository.LoadDeckDefinition();
             
-                Assert.NotNull(result);
+                    Assert.NotNull(result);
                 
-                Assert.That(result, Is.TypeOf<CardPoolDeckDefinition>());
+                    Assert.That(result, Is.TypeOf<CardPoolDeckDefinition>());
+                }
             }
         }
     }

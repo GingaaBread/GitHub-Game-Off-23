@@ -3,9 +3,8 @@ using System.Linq;
 using JetBrains.Annotations;
 using main.entity.Card_Management;
 using main.entity.Card_Management.Card_Data;
-using main.repository;
-using UnityEngine;
 using UnityEngine.Assertions;
+using Zenject;
 
 namespace main.service.Card_Management
 {
@@ -13,43 +12,34 @@ namespace main.service.Card_Management
     ///     This services provides the business logic for the deck entity, represented as a card pile.
     ///     The deck is created and shuffled automatically by using the starter deck definition entity.
     /// </summary>
-    public class DeckService : Service
+    public class DeckService : Service, IInitializable
     {
         /// <summary>
         ///     Contains the deck of the player at all points in the game.
         ///     This is created automatically once the service is instantiated, and loads the starter deck as it is
         ///     defined in the editor in a random order (shuffled).
         /// </summary>
-        private readonly CardPile _deck;
+        private readonly CardPile deck;
+        private readonly StarterDeck starterDeck;
 
-        /// <summary>
-        ///     Creates the singleton of this service if it does not exist and then starts the game
-        /// </summary>
-        public DeckService()
+        public DeckService(CardPile deck, StarterDeck starterDeck)
         {
-            Instance = this;
-            LogInfo("Successfully set the DeckService's singleton instance");
-
-            LogInfo("Now retrieving starter deck definition");
-            _deck = new CardPile(new StarterDeckDefinitionRepositoryLegacy().GetAll().ToList(), true);
-            LogInfo("Deck has been set and shuffled");
-
-            LogInfo("Deck consists of these cards:");
-            if (debugMode) _deck.Pile.ToList().ForEach(card => Debug.Log($"\t- {card}"));
+            this.deck = deck;
+            this.starterDeck = starterDeck;
         }
 
-        /// <summary>
-        ///     The non-thread-safe singleton of the service
-        /// </summary>
-        public static DeckService Instance { get; private set; }
-
+        public void Initialize()
+        {
+            starterDeck.Cards.ForEach(deck.Pile.Push);
+        }
+        
         /// <summary>
         ///     Yields the deck as a list of cards
         /// </summary>
         /// <returns>The deck of cards converted to a list</returns>
-        public List<Card> ToList()
+        public IEnumerable<Card> ToList()
         {
-            return _deck.Pile.ToList();
+            return deck.Pile.ToList();
         }
 
         /// <summary>
@@ -58,10 +48,10 @@ namespace main.service.Card_Management
         /// <returns>the card at the top of the deck as a <see cref="Card" /></returns>
         public Card DrawFromTop()
         {
-            Assert.IsTrue(_deck.Pile.Count > 0, "Should never try to draw when the deck is empty. " +
+            Assert.IsTrue(deck.Pile.Count > 0, "Should never try to draw when the deck is empty. " +
                                                 "Classes should check this first");
 
-            var topCard = _deck.Pile.Pop();
+            var topCard = deck.Pile.Pop();
             LogInfo($"Drew '{topCard}' as the top card");
 
             return topCard;
@@ -74,7 +64,7 @@ namespace main.service.Card_Management
         public void AddCard([NotNull] Card card)
         {
             LogInfo($"Added card '{card}' to the deck");
-            _deck.Pile.Push(card);
+            deck.Pile.Push(card);
         }
 
         /// <summary>
@@ -83,7 +73,7 @@ namespace main.service.Card_Management
         /// <returns>The size as an integer</returns>
         public int Size()
         {
-            return _deck.Pile.Count;
+            return deck.Pile.Count;
         }
 
         /// <summary>

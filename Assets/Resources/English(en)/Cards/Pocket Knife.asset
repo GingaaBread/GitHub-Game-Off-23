@@ -13,12 +13,10 @@ MonoBehaviour:
   m_Name: Pocket Knife
   m_EditorClassIdentifier: 
   _cardName: Pocket Knife
-  _cardSprite: {fileID: 0}
+  _cardSprite: {fileID: 21300000, guid: 30f64548f8303b643aae26b79bd92618, type: 3}
   _cardClass: 0
   _cardRarity:
     _rarity: 4
-  _unitTimeCost:
-    _time: 4
   _cardEffects: []
   _numberOfCopiesInPool: 4
   _amountOfTurnsToLast: 5

@@ -8,10 +8,15 @@
     public class Fish
     {
         /// <summary>
+        ///     The total amount of scales a fish has initially.
+        /// </summary>
+        public int TotalScales { get; }
+        
+        /// <summary>
         ///     The remaining fish scales that should be reduced to zero by the player.
         ///     Once it reaches zero or less, it is considered "scaled" and replaced by another fish.
         /// </summary>
-        public int remainingScales;
+        public int RemainingScales { get; set; }
 
         /// <summary>
         ///     Creates a new fish entity using the total scales as its base amount.
@@ -19,7 +24,8 @@
         /// <param name="totalScales">the amount of scales the fish should spawn with</param>
         public Fish(int totalScales)
         {
-            remainingScales = totalScales;
+            TotalScales = totalScales;
+            RemainingScales = TotalScales;
         }
     }
 }

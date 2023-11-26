@@ -13,6 +13,6 @@ namespace main.entity.Card_Management
         ///     Contains the pool of discovered cards as a list.
         ///     The instance is created automatically.
         /// </summary>
-        public List<Card> Pool { get; private set; } = new();
+        public List<Card> Cards { get; } = new();
     }
 }

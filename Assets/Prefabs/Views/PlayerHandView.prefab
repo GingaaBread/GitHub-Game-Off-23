@@ -58,7 +58,7 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_Spacing: 100
   m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
@@ -76,5 +76,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8a501a4c0204ddd8019ef91be48eec7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cardViewContainerPrefab: {fileID: 8214693209606657553, guid: 69c28ec29abf7de42a509d2fcc5af489, type: 3}
   _cardViewPrefab: {fileID: 4326507948408406445, guid: fbb233c8a0decb64f980d72930d1652e, type: 3}
   _playerHandLayout: {fileID: 3799817985229563130}

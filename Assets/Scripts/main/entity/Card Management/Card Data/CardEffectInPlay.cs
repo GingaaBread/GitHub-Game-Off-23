@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace main.entity.Card_Management.Card_Data
 {
     /// <summary>
@@ -9,8 +7,8 @@ namespace main.entity.Card_Management.Card_Data
     
     public class CardEffectInPlay
     {
-        public int multiplier;
-        public CardEffect effectBase;
+        private int multiplier;
+        private CardEffect effectBase;
 
         public void Execute(){
             effectBase.Execute(multiplier);

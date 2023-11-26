@@ -1,14 +1,19 @@
+using UnityEngine.Assertions;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 
 namespace main.infrastructure
 {
-    public class LocalizationSettingsWrapper : ILocalizationSettings
+    public class LocalizationSettingsWrapper
     {
-        public Locale SelectedLocale
+        public static LocaleIdentifier SelectedLocaleIdentifier
         {
-            get => LocalizationSettings.SelectedLocale;
-            set => LocalizationSettings.SelectedLocale = value;
+            get
+            {
+                Assert.IsNotNull(LocalizationSettings.SelectedLocale, "There is no locale selected");
+                
+                return LocalizationSettings.SelectedLocale.Identifier;
+            }
         }
     }
 }

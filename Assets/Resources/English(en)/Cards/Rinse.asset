@@ -13,11 +13,9 @@ MonoBehaviour:
   m_Name: Rinse
   m_EditorClassIdentifier: 
   _cardName: Rinse
-  _cardSprite: {fileID: 0}
+  _cardSprite: {fileID: 21300000, guid: 0fb20c22d94b0ac45ac1124b5d56e479, type: 3}
   _cardClass: 3
   _cardRarity:
     _rarity: 7
-  _unitTimeCost:
-    _time: 2
   _cardEffects: []
   _numberOfCopiesInPool: 5

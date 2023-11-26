@@ -13,11 +13,9 @@ MonoBehaviour:
   m_Name: Family Trade
   m_EditorClassIdentifier: 
   _cardName: Family Trade
-  _cardSprite: {fileID: 0}
+  _cardSprite: {fileID: 21300000, guid: 4823774bcecc3ee42b0f119906dd0f2c, type: 3}
   _cardClass: 2
   _cardRarity:
     _rarity: 14
-  _unitTimeCost:
-    _time: 4
   _cardEffects: []
   _numberOfCopiesInPool: 2

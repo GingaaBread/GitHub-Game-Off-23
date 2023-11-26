@@ -1,5 +1,6 @@
 ﻿using main.entity.Card_Management;
 using main.entity.Card_Management.Card_Data;
+using main.entity.Turn_System;
 using UnityEngine.Assertions;
 using UnityEngine.Events;
 
@@ -11,11 +12,19 @@ namespace main.service.Card_Management
     /// </summary>
     public class PlayerHandService : Service
     {
-        /// <summary>
-        ///     The player hand entity which contains the cards the player holds in their hand
-        /// </summary>
-        private readonly PlayerHand _playerHand = new();
-
+        private readonly PlayerHand playerHand;
+        private readonly DeckService deckService;
+        private readonly DiscardPileService discardPileService;
+        private readonly Turn turn;
+        
+        public PlayerHandService(PlayerHand playerHand, DeckService deckService, DiscardPileService discardPileService, Turn turn)
+        {
+            this.playerHand = playerHand;
+            this.deckService = deckService;
+            this.discardPileService = discardPileService;
+            this.turn = turn;
+        }
+        
         /// <summary>
         ///     Triggered when a card from the player's hand has been discarded.
         ///     If multiple cards are discarded, this event is triggered once per each card.
@@ -33,65 +42,29 @@ namespace main.service.Card_Management
         ///     Triggered when the entire hand has been discarded.
         /// </summary>
         public readonly UnityEvent OnHandDiscarded = new();
-
+        
         /// <summary>
-        ///     Creates the singleton instance
+        ///     Draws the amount of cards specified in DrawAmount from PlayerHand. If the amount is larger than the
+        ///     amount of cards left in the deck, all cards from the discard pile will be shuffled back into the deck
+        ///     and the remaining cards will be drawn from the newly shuffled deck.
         /// </summary>
-        public PlayerHandService()
+        public void Draw()
         {
-            Instance = this;
-            LogInfo("Successfully set the PlayerHandService's singleton instance");
-        }
-
-        /// <summary>
-        ///     The singleton instance of the service
-        /// </summary>
-        public static PlayerHandService Instance { get; private set; }
-
-        /// <summary>
-        ///     Plays the card at the specified index and then discards it
-        /// </summary>
-        /// <param name="index">the positive index of the cards within bounds</param>
-        public void PlayCardAt(int index)
-        {
-            Assert.IsTrue(_playerHand.HandCards.Count > index && index >= 0,
-                "The view should check if the card to play is within bounds!");
-
-            var card = _playerHand.HandCards[index];
-            LogInfo($"Playing card '{card}'");
-
-            // TODO card effect implementation
-
-            _playerHand.HandCards.RemoveAt(index);
-            DiscardPileService.Instance.AddToPile(card);
-            OnCardDiscarded.Invoke(index);
-
-            LogInfo("Successfully played the card");
-        }
-
-        /// <summary>
-        ///     Draws the specified amount of cards. If the amount is larger than the amount of cards left in the deck,
-        ///     all cards from the discard pile will be shuffled back into the deck and the remaining cards will be
-        ///     drawn from the newly shuffled deck.
-        /// </summary>
-        /// <param name="amountOfCardsToDraw">The amount of cards to draw as an integer</param>
-        public void Draw(int amountOfCardsToDraw)
-        {
-            LogInfo($"Drawing {amountOfCardsToDraw} card(s)");
-            var amountOfCardsInDeck = DeckService.Instance.Size();
+            LogInfo($"Drawing {playerHand.DrawAmount} card(s)");
+            var amountOfCardsInDeck = deckService.Size();
 
             // TODO: new shuffle
             // TODO: if the deck is empty and discard pile are empty, just return out
             // Does the deck need to be refilled and reshuffled?
-            if (amountOfCardsToDraw > amountOfCardsInDeck)
+            if (playerHand.DrawAmount > amountOfCardsInDeck)
             {
-                var remainingCardsToDrawAfterDrawingLastCardsFromDeck = amountOfCardsToDraw - amountOfCardsInDeck;
+                var remainingCardsToDrawAfterDrawingLastCardsFromDeck = playerHand.DrawAmount - amountOfCardsInDeck;
 
                 // Draw all remaining cards from the deck
                 DrawCardsFromDeck(amountOfCardsInDeck);
 
                 // Now refill the deck and shuffle it
-                DiscardPileService.Instance.ShuffleBackIntoDeck();
+                discardPileService.ShuffleBackIntoDeck();
 
                 // Now draw the remaining amount of cards
                 DrawCardsFromDeck(remainingCardsToDrawAfterDrawingLastCardsFromDeck);
@@ -99,10 +72,53 @@ namespace main.service.Card_Management
             // If the deck has enough cards, just draw them
             else
             {
-                DrawCardsFromDeck(amountOfCardsToDraw);
+                DrawCardsFromDeck(playerHand.DrawAmount);
             }
         }
 
+        /// <summary>
+        ///     Plays the card at the specified index and then discards it
+        /// </summary>
+        /// <param name="index">the positive index of the cards within bounds</param>
+        public void PlayCardAt(int index)
+        {
+            Assert.IsTrue(playerHand.HandCards.Count > index && index >= 0,
+                "The view should check if the card to play is within bounds!");
+
+            var card = playerHand.HandCards[index];
+
+            if (!CardHasEnoughTime(card))
+            {
+                LogInfo($"Not enough time to playing card '{card}'");
+                return;
+            }
+
+            LogInfo($"Playing card '{card}'");
+
+            // TODO card effect implementation
+
+            playerHand.HandCards.RemoveAt(index);
+            discardPileService.AddToPile(card);
+            OnCardDiscarded.Invoke(index);
+
+            LogInfo("Successfully played the card");
+        }
+        
+        /// <summary>
+        ///     Removes all cards from the player's hand and adds them to the discard pile
+        /// </summary>
+        public void DiscardHand()
+        {
+            LogInfo("Discarding the entire player hand");
+
+            foreach (var playerHandHandCard in playerHand.HandCards)
+                discardPileService.AddToPile(playerHandHandCard);
+
+            playerHand.HandCards.Clear();
+
+            OnHandDiscarded.Invoke();
+        }
+        
         /// <summary>
         ///     Helper method that will "actually" draw the cards from the deck and then add them to the hand.
         ///     All assertions, state checks and so on should be done by the caller!
@@ -112,27 +128,18 @@ namespace main.service.Card_Management
         {
             for (var i = 0; i < amount; i++)
             {
-                var drawnCard = DeckService.Instance.DrawFromTop();
-                _playerHand.HandCards.Add(drawnCard);
+                var drawnCard = deckService.DrawFromTop();
+                playerHand.HandCards.Add(drawnCard);
 
                 OnCardDrawn.Invoke(drawnCard);
+                
                 LogInfo("Triggered the OnCardDrawn event");
             }
         }
-
-        /// <summary>
-        ///     Removes all cards from the player's hand and adds them to the discard pile
-        /// </summary>
-        public void DiscardHand()
+        
+        private bool CardHasEnoughTime(Card card)
         {
-            LogInfo("Discarding the entire player hand");
-
-            foreach (var playerHandHandCard in _playerHand.HandCards)
-                DiscardPileService.Instance.AddToPile(playerHandHandCard);
-
-            _playerHand.HandCards.Clear();
-
-            OnHandDiscarded.Invoke();
+            return card.TimeCost <= turn.RemainingTime.Time;
         }
     }
 }

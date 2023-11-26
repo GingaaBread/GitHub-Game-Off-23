@@ -1,12 +1,21 @@
 ﻿using main.service.Turn_System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 namespace main.view
 {
     public class GameOverOverlay : MonoBehaviour
     {
         [SerializeField] private GameObject _container;
+        
+        private GameService gameService;
+        
+        [Inject]
+        public void Construct(GameService gameService)
+        {
+            this.gameService = gameService;
+        }
 
         private void Awake()
         {
@@ -15,7 +24,7 @@ namespace main.view
 
         private void Start()
         {
-            GameService.Instance.OnGameOver.AddListener(Render);
+            gameService.OnGameOver.AddListener(Render);
         }
 
         public void RestartGame()

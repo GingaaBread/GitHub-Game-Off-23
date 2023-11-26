@@ -13,11 +13,9 @@ MonoBehaviour:
   m_Name: Tweezers
   m_EditorClassIdentifier: 
   _cardName: Tweezers
-  _cardSprite: {fileID: 0}
+  _cardSprite: {fileID: 21300000, guid: 601c1575348c57a44b4b26b9ba648427, type: 3}
   _cardClass: 0
   _cardRarity:
     _rarity: 5
-  _unitTimeCost:
-    _time: 3
   _cardEffects: []
   _numberOfCopiesInPool: 6

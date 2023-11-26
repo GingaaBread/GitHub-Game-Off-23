@@ -13,11 +13,9 @@ MonoBehaviour:
   m_Name: Fishmonger
   m_EditorClassIdentifier: 
   _cardName: Fishmonger
-  _cardSprite: {fileID: 0}
+  _cardSprite: {fileID: 21300000, guid: 4a992976325f82f4bbb1779cc9d3ea04, type: 3}
   _cardClass: 1
   _cardRarity:
     _rarity: 7
-  _unitTimeCost:
-    _time: 2
   _cardEffects: []
   _numberOfCopiesInPool: 4

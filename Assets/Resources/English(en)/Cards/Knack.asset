@@ -13,11 +13,9 @@ MonoBehaviour:
   m_Name: Knack
   m_EditorClassIdentifier: 
   _cardName: Knack
-  _cardSprite: {fileID: 0}
+  _cardSprite: {fileID: 21300000, guid: 5fa8926dcc18bcd4bb5538d2657481e5, type: 3}
   _cardClass: 2
   _cardRarity:
     _rarity: 9
-  _unitTimeCost:
-    _time: 1
   _cardEffects: []
   _numberOfCopiesInPool: 3

@@ -13,11 +13,9 @@ MonoBehaviour:
   m_Name: Deba
   m_EditorClassIdentifier: 
   _cardName: Deba
-  _cardSprite: {fileID: 0}
+  _cardSprite: {fileID: 21300000, guid: 56a3a086a719b1348a4d7e40f2969862, type: 3}
   _cardClass: 0
   _cardRarity:
     _rarity: 0
-  _unitTimeCost:
-    _time: 2
   _cardEffects: []
   _numberOfCopiesInPool: 7

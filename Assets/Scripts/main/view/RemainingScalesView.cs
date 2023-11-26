@@ -1,16 +1,25 @@
 ﻿using main.service.Fish_Management;
 using TMPro;
 using UnityEngine;
+using Zenject;
 
 namespace main.view
 {
     public class RemainingScalesView : MonoBehaviour
     {
         [SerializeField] private TMP_Text _remainingScalesText;
+        
+        private FishService fishService;
+        
+        [Inject]
+        public void Construct(FishService fishService)
+        {
+            this.fishService = fishService;
+        }
 
         private void Start()
         {
-            FishService.Instance.OnFishScalesHaveChanged.AddListener(Render);
+            fishService.OnFishScalesHaveChanged.AddListener(Render);
             Render(100);
         }
 

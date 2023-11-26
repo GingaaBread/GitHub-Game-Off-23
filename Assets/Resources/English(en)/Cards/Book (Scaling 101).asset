@@ -13,12 +13,10 @@ MonoBehaviour:
   m_Name: Book (Scaling 101)
   m_EditorClassIdentifier: 
   _cardName: Book (Scaling 101)
-  _cardSprite: {fileID: 0}
+  _cardSprite: {fileID: 21300000, guid: 0906b4a1bee05f74ba4572ba3183ff45, type: 3}
   _cardClass: 2
   _cardRarity:
     _rarity: 8
-  _unitTimeCost:
-    _time: 6
   _cardEffects: []
   _numberOfCopiesInPool: 3
   _amountOfTurnsToLast: 4

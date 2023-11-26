@@ -1,3 +1,4 @@
+using main.infrastructure;
 using UnityEngine;
 
 namespace main.repository
@@ -6,9 +7,9 @@ namespace main.repository
     {
         public string ResourcePath { get; }
 
-        public ResourceLoader(string resourcePath)
+        public ResourceLoader(LocalizationSettingsWrapper localizationSettingsWrapper, ResourcePath resourcePath)
         {
-            ResourcePath = resourcePath;
+            ResourcePath = $"{LocalizationSettingsWrapper.SelectedLocaleIdentifier}/{resourcePath.GetValue()}";
         }
 
         public T[] GetAll()

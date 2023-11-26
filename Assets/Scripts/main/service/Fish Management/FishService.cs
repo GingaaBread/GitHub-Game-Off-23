@@ -11,52 +11,40 @@ namespace main.service.Fish_Management
     public class FishService : Service
     {
         /// <summary>
+        ///     The current fish entity used for damage
+        /// </summary>
+        private readonly Fish fish;
+
+        public FishService(Fish fish)
+        {
+            this.fish = fish;
+        }
+        
+        /// <summary>
         ///     Triggered once a fish has been completely scaled.
         /// </summary>
         public readonly UnityEvent OnFishHasBeenScaled = new();
-
+        
         /// <summary>
         ///     Triggered when a fish is scaled or a new fish is loaded
         /// </summary>
         public readonly UnityEvent<int> OnFishScalesHaveChanged = new();
-
-        /// <summary>
-        ///     The current fish entity used for damage
-        /// </summary>
-        private Fish _currentFish;
-
-        /// <summary>
-        ///     Creates the singleton instance
-        /// </summary>
-        public FishService()
-        {
-            Instance = this;
-            LogInfo("Successfully set the FishService's singleton instance");
-
-            LogInfo("Now spawning the starter fish");
-            SpawnNewFish();
-        }
-
-        /// <summary>
-        ///     The instance of the service singleton
-        /// </summary>
-        public static FishService Instance { get; private set; }
-
+        
         /// <summary>
         ///     Sets the current fish to a new fish instance.
         ///     Note that this should only be done if the current fish is null or its remaining scales are zero
         /// </summary>
         private void SpawnNewFish()
         {
-            Assert.IsTrue(_currentFish is null || _currentFish.remainingScales is 0,
+            Assert.IsTrue(fish is null || fish.RemainingScales is 0,
                 "Should only try to spawn a new fish if there is none yet or the current fish has been scaled");
 
             // Change this behaviour if there will be different fish types soon
-            _currentFish = new Fish(100);
-            LogInfo($"Spawned a new fish with a total amount of scales of '{_currentFish.remainingScales}");
+            RestoreFishScales();
+            LogInfo($"Spawned a new fish with a total amount of scales of '{fish.RemainingScales}");
 
             LogInfo("Triggering the OnFishScalesHaveChanged event");
-            OnFishScalesHaveChanged.Invoke(_currentFish.remainingScales);
+            OnFishScalesHaveChanged.Invoke(fish.RemainingScales);
         }
 
         /// <summary>
@@ -68,28 +56,28 @@ namespace main.service.Fish_Management
         public void ScaleFish(int damage)
         {
             Assert.IsTrue(damage > 0, "Damage dealt should be positive");
-            Assert.IsFalse(_currentFish is null || _currentFish.remainingScales is 0,
+            Assert.IsFalse(fish is null || fish.RemainingScales is 0,
                 "Should not try to scale the fish if it does not exist yet or is already scaled");
 
-            _currentFish.remainingScales -= damage;
+            fish.RemainingScales -= damage;
             LogInfo($"Damaged the current fish by '{damage}'");
 
             LogInfo("Triggering the OnFishScalesHaveChanged event");
-            OnFishScalesHaveChanged.Invoke(_currentFish.remainingScales);
+            OnFishScalesHaveChanged.Invoke(fish.RemainingScales);
 
             LogInfo("Now checking if the fish has been scaled completely");
-            if (_currentFish.remainingScales <= 0)
+            if (fish.RemainingScales <= 0)
             {
                 LogInfo("The fish has been scaled");
 
                 LogInfo("Triggering the successful scale event");
                 OnFishHasBeenScaled.Invoke();
 
-                var carryOverDamage = +_currentFish.remainingScales;
+                var carryOverDamage = +fish.RemainingScales;
                 LogInfo($"There is a carry over damage of '{carryOverDamage}'");
 
                 // For nicer consistency in the program
-                _currentFish.remainingScales = 0;
+                fish.RemainingScales = 0;
 
                 SpawnNewFish();
 
@@ -102,8 +90,13 @@ namespace main.service.Fish_Management
             else
             {
                 LogInfo("Fish has not been scaled entirely, yet. It still has " +
-                        $"'{_currentFish.remainingScales}' remaining scales");
+                        $"'{fish.RemainingScales}' remaining scales");
             }
+        }
+        
+        private void RestoreFishScales()
+        {
+            fish.RemainingScales = fish.TotalScales;
         }
     }
 }

@@ -15,31 +15,11 @@ namespace main.service.Turn_System
         ///     The non-null <see cref="EffectAssembly" /> entity.
         ///     The instance is created automatically once the service is created.
         /// </summary>
-        [NotNull] private readonly EffectAssembly _effectAssembly = new();
+        [NotNull] private readonly EffectAssembly effectAssembly;
 
-        /// <summary>
-        ///     Creates the singleton of this service if it does not exist
-        /// </summary>
-        public EffectAssemblyService()
+        public EffectAssemblyService([NotNull] EffectAssembly effectAssembly)
         {
-            Instance = this;
-            LogInfo("Successfully set the EffectAssemblyService's singleton instance");
-        }
-
-        /// <summary>
-        ///     The non-thread-safe singleton of the service
-        /// </summary>
-        public static EffectAssemblyService Instance { get; private set; }
-
-        /// <summary>
-        ///     Executes each end-of-turn effect assembled in the <see cref="EffectAssembly" /> and then clears the
-        ///     list, making it ready for the next turn.
-        /// </summary>
-        public void ExecuteAll()
-        {
-            _effectAssembly.Effects.ForEach(effectInPlay => effectInPlay.Execute());
-            Clear();
-            LogInfo("Successfully executed all end-of-turn effects");
+            this.effectAssembly = effectAssembly;
         }
 
         /// <summary>
@@ -50,15 +30,27 @@ namespace main.service.Turn_System
         public void AddEffect([NotNull] CardEffectInPlay effect)
         {
             LogInfo($"Adding a new card effect to the end-of-turn effects: '{effect}'");
-            _effectAssembly.Effects.Add(effect);
+            effectAssembly.Effects.Add(effect);
         }
-
+        
+        /// <summary>
+        ///     Executes each end-of-turn effect assembled in the <see cref="EffectAssembly" /> and then clears the
+        ///     list, making it ready for the next turn.
+        /// </summary>
+        public void ExecuteAll()
+        {
+            LogInfo("Now executing all end of turn effects");
+            effectAssembly.Effects.ForEach(effectInPlay => effectInPlay.Execute());
+            Clear();
+            LogInfo("Successfully executed all end-of-turn effects");
+        }
+        
         /// <summary>
         ///     Removes all end-of-turn effects from the <see cref="EffectAssembly" /> once they have been executed.
         /// </summary>
         private void Clear()
         {
-            _effectAssembly.Effects.Clear();
+            effectAssembly.Effects.Clear();
         }
     }
 }

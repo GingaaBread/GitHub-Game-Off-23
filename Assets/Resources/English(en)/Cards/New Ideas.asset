@@ -13,12 +13,10 @@ MonoBehaviour:
   m_Name: New Ideas
   m_EditorClassIdentifier: 
   _cardName: New Ideas
-  _cardSprite: {fileID: 0}
+  _cardSprite: {fileID: 21300000, guid: 0e72ceb1fde31824594cb9e007bb4481, type: 3}
   _cardClass: 1
   _cardRarity:
     _rarity: 12
-  _unitTimeCost:
-    _time: 5
   _cardEffects: []
   _numberOfCopiesInPool: 3
   _amountOfTurnsToLast: 3

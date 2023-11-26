@@ -13,11 +13,9 @@ MonoBehaviour:
   m_Name: Practice
   m_EditorClassIdentifier: 
   _cardName: Practice
-  _cardSprite: {fileID: 0}
+  _cardSprite: {fileID: 21300000, guid: dedc5326e70c22449aba60dc5701dcb7, type: 3}
   _cardClass: 2
   _cardRarity:
     _rarity: 6
-  _unitTimeCost:
-    _time: 1
   _cardEffects: []
   _numberOfCopiesInPool: 4

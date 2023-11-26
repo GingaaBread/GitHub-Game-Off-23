@@ -1,3 +1,4 @@
+using System.Text;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -63,17 +64,6 @@ namespace main.entity.Card_Management.Card_Data
         private CardEffect[] _cardEffects;
 
         /// <summary>
-        ///     The amount of times this card should be added to the pool
-        /// </summary>
-        [Space(20)] [InfoBox("The amount of times this card should be added to the pool")] [SerializeField]
-        private int _numberOfCopiesInPool;
-
-        /// <summary>
-        ///     Yields the number of copies this card should have in the card pool
-        /// </summary>
-        public int NumberOfCopiesInPool => _numberOfCopiesInPool;
-
-        /// <summary>
         ///     Yields the rarity of the card as an integer
         /// </summary>
         public int Rarity => _cardRarity.Rarity;
@@ -87,5 +77,30 @@ namespace main.entity.Card_Management.Card_Data
         ///     Yields the cost of the card as an integer
         /// </summary>
         public int TimeCost => _unitTimeCost.Time;
+
+        /// <summary>
+        ///     Yields the icon of the card as a Unity Sprite
+        /// </summary>
+        public Sprite IconSprite => _cardSprite;
+
+        /// <summary>
+        ///     Yields the classes of the card as a string
+        ///     TODO Use localisation key
+        /// </summary>
+        public string Class => _cardClass.ToString();
+
+        /// <summary>
+        ///     Yields the description of the card as a string
+        /// </summary>
+        public string Description()
+        {
+            return "No effect";
+            // TODO Use the card effect description instead of the "name" placeholder
+            var bobTheBuilder = new StringBuilder();
+            foreach (var cardEffect in _cardEffects) bobTheBuilder.Append(cardEffect.name + "\n\n");
+
+            var description = bobTheBuilder.ToString();
+            return description[..^2];
+        }
     }
 }
