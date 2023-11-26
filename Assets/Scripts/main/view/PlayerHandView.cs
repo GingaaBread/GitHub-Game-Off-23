@@ -10,6 +10,8 @@ namespace main.view
     {
         private const float BASE_SPACING_AMOUNT = 100f;
         private const float CARD_SPACING_FACTOR = 15f;
+        private const float CARD_ROTATION_FACTOR = 15f;
+        private const float CARD_MAX_ROTATION = 45f;
         [SerializeField] private CardView _cardViewPrefab;
         [SerializeField] private HorizontalLayoutGroup _playerHandLayout;
 
@@ -27,6 +29,7 @@ namespace main.view
             var newCardView = Instantiate(_cardViewPrefab, transform);
             newCardView.Render(cardEntity);
             _playerHandLayout.spacing -= CARD_SPACING_FACTOR;
+            ApplyRotationToChildren();
         }
 
         private void RemoveCardAtIndex(int index)
@@ -41,6 +44,17 @@ namespace main.view
             foreach (Transform child in _playerHandLayout.transform) Destroy(child.gameObject);
 
             _playerHandLayout.spacing = BASE_SPACING_AMOUNT;
+        }
+
+        private void ApplyRotationToChildren(){
+            int currentRotationFactor = Mathf.RoundToInt(-_playerHandLayout.transform.childCount / 2);
+            foreach(Transform child in _playerHandLayout.transform){
+                child.transform.rotation = Quaternion.Euler(0,0,Mathf.Clamp(currentRotationFactor * -CARD_ROTATION_FACTOR, -CARD_MAX_ROTATION, CARD_MAX_ROTATION));
+                currentRotationFactor++;
+                if(currentRotationFactor == 0 && _playerHandLayout.transform.childCount % 2 == 0){
+                    currentRotationFactor++;
+                }
+            }
         }
     }
 }
