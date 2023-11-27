@@ -8,6 +8,8 @@ namespace main.view
     public class GameOverOverlay : MonoBehaviour
     {
         [SerializeField] private GameObject _container;
+        [SerializeField] private GameObject _gameOverWinText;
+        [SerializeField] private GameObject _gameOverLossText;
         
         private GameService gameService;
         
@@ -24,7 +26,8 @@ namespace main.view
 
         private void Start()
         {
-            gameService.OnGameOver.AddListener(Render);
+            gameService.OnGameOver.AddListener(() => Render(false));
+            // TODO: OnGameWon -> Render(true)
         }
 
         public void RestartGame()
@@ -37,8 +40,10 @@ namespace main.view
             SceneManager.LoadScene("Menu");
         }
 
-        private void Render()
+        private void Render(bool gameIsWon)
         {
+            _gameOverWinText.SetActive(gameIsWon);
+            _gameOverLossText.SetActive(!gameIsWon);
             _container.SetActive(true);
         }
     }

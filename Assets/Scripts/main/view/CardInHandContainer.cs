@@ -77,11 +77,13 @@ namespace main.view
         public void CreateChild([NotNull] Card cardToContain, [NotNull] PlayerHandView callback)
         {
             var newCardView = Instantiate(_cardViewPrefab, transform);
+            PlayerHandCanvas.Instance.SetAsDirectChild(newCardView.transform);
             newCardView.Render(cardToContain);
+            newCardView.HandleDraw(transform);
 
             _callback = callback;
             _child = newCardView;
-            _childRectTransform = _child.GetComponent<RectTransform>();
+            _childRectTransform = _child.RectTransform;
             _playState = CardPlayState.IDLE;
         }
 

@@ -123,6 +123,8 @@ namespace main.service.Turn_System
             LogInfo($"Registered the selection made by the player. Removing card '{cardToRemoveFromDeck}'" +
                     $" and adding card '{cardToAddToDeck}'");
             
+            deckService.ExchangeCardForAnother(cardToRemoveFromDeck, cardToAddToDeck);
+            
             OnCardsSwapped?.Invoke();
         }
         

@@ -3,6 +3,7 @@ using System.Linq;
 using JetBrains.Annotations;
 using main.entity.Card_Management;
 using main.entity.Card_Management.Card_Data;
+using UnityEngine;
 using UnityEngine.Assertions;
 using Zenject;
 
@@ -55,6 +56,20 @@ namespace main.service.Card_Management
             LogInfo($"Drew '{topCard}' as the top card");
 
             return topCard;
+        }
+
+        /// <summary>
+        /// Removes the first occurence of the card to remove and adds the card that should be added,
+        /// and then shuffles the deck
+        /// </summary>
+        public void ExchangeCardForAnother([NotNull] Card cardToRemove, [NotNull] Card cardToAdd)
+        {
+            LogInfo($"Removing card '{cardToRemove}' and adding card '{cardToAdd}'");
+            var initialSize = deck.Pile.Count;
+            
+            // TODO
+            
+            Assert.AreEqual(initialSize, deck.Pile.Count);
         }
 
         /// <summary>

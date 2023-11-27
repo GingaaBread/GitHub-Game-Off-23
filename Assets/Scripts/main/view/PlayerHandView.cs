@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.Collections;
+using System.Diagnostics.CodeAnalysis;
 using main.entity.Card_Management.Card_Data;
 using main.service.Card_Management;
 using UnityEngine;
@@ -14,14 +15,9 @@ namespace main.view
 
         [SerializeField] private CardInHandContainer _cardViewContainerPrefab;
         [SerializeField] private HorizontalLayoutGroup _playerHandLayout;
-        
+
+        private int _drawOffset;
         private PlayerHandService playerHandService;
-        
-        [Inject]
-        public void Construct(PlayerHandService playerHandService)
-        {
-            this.playerHandService = playerHandService;
-        }
 
         private void OnEnable()
         {
@@ -31,12 +27,18 @@ namespace main.view
 
             _playerHandLayout.spacing = BASE_SPACING_AMOUNT;
         }
-        
+
         private void OnDisable()
         {
             playerHandService.OnCardDrawn.RemoveListener(RenderNewCard);
             playerHandService.OnCardDiscarded.RemoveListener(RemoveCardAtIndex);
             playerHandService.OnHandDiscarded.RemoveListener(RemoveAll);
+        }
+
+        [Inject]
+        public void Construct(PlayerHandService playerHandService)
+        {
+            this.playerHandService = playerHandService;
         }
 
         public void IncreaseSpacing()
@@ -52,8 +54,23 @@ namespace main.view
         private void RenderNewCard([NotNull] Card cardEntity)
         {
             var newCardViewContainer = Instantiate(_cardViewContainerPrefab, transform);
-            newCardViewContainer.CreateChild(cardEntity, this);
+            _drawOffset++;
+            StartCoroutine(CreateCardAfterTime(newCardViewContainer, cardEntity, _drawOffset));
             DecreaseSpacing();
+        }
+
+        private IEnumerator CreateCardAfterTime(
+            [NotNull] CardInHandContainer container,
+            [NotNull] Card cardEntity,
+            int offset)
+        {
+            // Guarantee to wait one frame
+            yield return new WaitForEndOfFrame();
+
+            // Now create a slight draw offset
+            yield return new WaitForSeconds(0.1f * offset);
+
+            container.CreateChild(cardEntity, this);
         }
 
         private void RemoveCardAtIndex(int index)
@@ -65,6 +82,8 @@ namespace main.view
 
         private void RemoveAll()
         {
+            _drawOffset = 0;
+
             foreach (Transform child in _playerHandLayout.transform) Destroy(child.gameObject);
 
             _playerHandLayout.spacing = BASE_SPACING_AMOUNT;

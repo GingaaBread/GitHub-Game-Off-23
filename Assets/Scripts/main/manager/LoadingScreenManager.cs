@@ -1,39 +1,35 @@
+using System.Collections;
+using System.Collections.Generic;
+using FMODUnity;
+using NaughtyAttributes;
+using UnityEngine;
+using UnityEngine.Assertions;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 namespace Core
 {
-    using System.Collections;
-    using System.Collections.Generic;
-    using FMODUnity;
-    using NaughtyAttributes;
-    using UnityEngine;
-    using UnityEngine.Assertions;
-    using UnityEngine.SceneManagement;
-    using UnityEngine.UI;
-
     /// <summary>
-    /// Used to asynchronously load FMOD data, render a loading spinner,
-    /// and then change to the main menu scene
+    ///     Used to asynchronously load FMOD data, render a loading spinner,
+    ///     and then change to the main menu scene
     /// </summary>
     public class LoadingScreenManager : MonoBehaviour
     {
-        [Header("FMOD Audio")]
-        [BankRef]
-        [SerializeField] private List<string> _banks;
+        [Header("FMOD Audio")] [BankRef] [SerializeField]
+        private List<string> _banks;
 
-        [Header("Spinner")]
-        [SerializeField] private Image _spinnerImage;
-        [SerializeField] private Sprite[] _spinnerSprites;
+        [Header("Spinner")] [SerializeField] private Image _spinnerImage;
 
-        [Header("Scene Management")]
-        [SerializeField][Scene] private string _sceneToLoadOnFinish;
+        [SerializeField] private Sprite _spinnerSprite;
+
+        [Header("Scene Management")] [SerializeField] [Scene]
+        private string _sceneToLoadOnFinish;
 
         private void Awake()
         {
-            Assert.IsNotNull(_spinnerImage, "There is no spinner image");
-            Assert.IsFalse(_spinnerSprites.Length is 0,
-                "There must be at least one spinner sprite");
             Assert.IsFalse(_banks.Count is 0, "There are no FMOD banks set up!");
 
-            _spinnerImage.sprite = _spinnerSprites[Random.Range(0, _spinnerSprites.Length)];
+            if (_spinnerImage is not null) _spinnerImage.sprite = _spinnerSprite;
         }
 
         private void Start()
@@ -42,7 +38,7 @@ namespace Core
         }
 
         /// <summary>
-        /// Loads the game settings, sets up FMOD, and switches to the menu scene
+        ///     Loads the game settings, sets up FMOD, and switches to the menu scene
         /// </summary>
         private IEnumerator LoadGameAsync()
         {
@@ -53,7 +49,7 @@ namespace Core
             yield return new WaitForSeconds(1);
 
             // Start an asynchronous operation to load the scene
-            AsyncOperation asyncSceneLoad = SceneManager.LoadSceneAsync(_sceneToLoadOnFinish);
+            var asyncSceneLoad = SceneManager.LoadSceneAsync(_sceneToLoadOnFinish);
 
             // Don't lead the scene start until all Studio Banks have finished loading
             asyncSceneLoad.allowSceneActivation = false;
@@ -73,6 +69,5 @@ namespace Core
             // Keep yielding the co-routine until scene loading and activation is done.
             while (!asyncSceneLoad.isDone) yield return null;
         }
-
     }
 }

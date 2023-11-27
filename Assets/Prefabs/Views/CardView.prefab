@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 2151763344732995324}
   - component: {fileID: 4326507948408406445}
   - component: {fileID: 8960865704425693677}
+  - component: {fileID: 2119321683219683838}
   m_Layer: 5
   m_Name: CardView
   m_TagString: Untagged
@@ -232,6 +233,7 @@ MonoBehaviour:
   _cardDescriptionText: {fileID: 9024027482075894813}
   _cardTypeSpriteImage: {fileID: 6784903596800981705}
   _cardIconSpriteImage: {fileID: 6564624181017337020}
+  _cardPlayEvent: {fileID: 2119321683219683838}
   _actionCardPanelSprite: {fileID: 21300000, guid: 7153b8dcd20316b4091c7ddbbcfefc9c, type: 3}
   _itemCardPanelSprite: {fileID: 21300000, guid: 63ca25c50a6cff6479f1cd37f8492ab9, type: 3}
 --- !u!114 &8960865704425693677
@@ -254,6 +256,37 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &2119321683219683838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2810235170236976100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 18008038
+      Data2: 1260097628
+      Data3: 101568185
+      Data4: 1168289788
+    Path: event:/SFX/Cards/Card_Play
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &3419740226053125671
 GameObject:
   m_ObjectHideFlags: 0
