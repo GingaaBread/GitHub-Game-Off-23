@@ -126,5 +126,9 @@ namespace main.view
                                                        " implemented")
             };
         }
+
+        public bool IsBeingDiscarded(){
+            return _isBeingDiscarded;
+        }
     }
 }

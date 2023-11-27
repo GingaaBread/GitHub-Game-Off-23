@@ -20,6 +20,7 @@ namespace main.view
 
         public void OnBeginDrag(PointerEventData eventData)
         {
+            _child.transform.rotation = Quaternion.identity;
             PlayerHandCanvas.Instance.SetAsDirectChild(_child.transform);
             _playState = CardPlayState.UNPLAYABLE;
         }
@@ -63,10 +64,12 @@ namespace main.view
                 case CardPlayState.UNPLAYABLE:
                     _childRectTransform.SetParent(transform);
                     _childRectTransform.anchoredPosition = Vector2.zero;
+                    _callback.ApplyRotationToChildren();
                     break;
                 case CardPlayState.PLAYABLE:
                     Destroy(gameObject);
                     _child.Discard();
+                    _callback.ApplyRotationToChildren();
                     break;
                 case CardPlayState.IDLE:
                 default:
@@ -87,11 +90,19 @@ namespace main.view
             _playState = CardPlayState.IDLE;
         }
 
+        public void ApplyRotation(float rotZ){
+            _child.transform.rotation = Quaternion.Euler(0,0,rotZ);
+        }
+
         private enum CardPlayState
         {
             PLAYABLE,
             UNPLAYABLE,
             IDLE
+        }
+
+        public bool IsBeingDiscarded(){
+            return _child.IsBeingDiscarded();
         }
     }
 }
