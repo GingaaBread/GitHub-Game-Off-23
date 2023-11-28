@@ -4,6 +4,7 @@ using main.entity.Card_Management.Card_Data;
 using main.view.Canvas;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using FMODUnity;
 
 namespace main.view
 {
@@ -12,14 +13,19 @@ namespace main.view
         private const float CLAMP_WIDTH = 20f, CLAMP_HEIGHT = 10f, PLAY_HEIGHT_LIMIT = -6.5f;
         [SerializeField] private CardView _cardViewPrefab;
         [SerializeField] private Animator _animator;
+        [SerializeField] private StudioEventEmitter _cardRedockEvent;
+        [SerializeField] private StudioEventEmitter _cardSelectionEvent;
+
         private PlayerHandView _callback;
 
         private CardView _child;
         private RectTransform _childRectTransform;
         private CardPlayState _playState;
 
+
         public void OnBeginDrag(PointerEventData eventData)
         {
+            _cardSelectionEvent.Play();
             PlayerHandCanvas.Instance.SetAsDirectChild(_child.transform);
             _playState = CardPlayState.UNPLAYABLE;
         }
@@ -61,6 +67,7 @@ namespace main.view
             switch (_playState)
             {
                 case CardPlayState.UNPLAYABLE:
+                    _cardRedockEvent.Play();
                     _childRectTransform.SetParent(transform);
                     _childRectTransform.anchoredPosition = Vector2.zero;
                     break;

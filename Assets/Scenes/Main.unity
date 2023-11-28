@@ -1098,6 +1098,69 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 455816396985384652, guid: e45014f0b7d3645458d79030a6b54c8a, type: 3}
   m_PrefabInstance: {fileID: 3251333045853920232}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &253596587
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 253596589}
+  - component: {fileID: 253596588}
+  m_Layer: 0
+  m_Name: Music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &253596588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253596587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 625531295
+      Data2: 1330153133
+      Data3: -1391190631
+      Data4: -872777320
+    Path: event:/Music/Music_Play
+  Event: 
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!4 &253596589
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253596587}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2077.198, y: 870.95465, z: 8.128591}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &468052628
 GameObject:
   m_ObjectHideFlags: 0
@@ -10100,6 +10163,26 @@ PrefabInstance:
     - target: {fileID: 6933831712327174227, guid: 0fd560edc10257d418f6cc03259d83b6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850731600963670630, guid: 0fd560edc10257d418f6cc03259d83b6, type: 3}
+      propertyPath: EventReference.Path
+      value: event:/SFX/UI/UI_EndTurn
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850731600963670630, guid: 0fd560edc10257d418f6cc03259d83b6, type: 3}
+      propertyPath: EventReference.Guid.Data1
+      value: -476955815
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850731600963670630, guid: 0fd560edc10257d418f6cc03259d83b6, type: 3}
+      propertyPath: EventReference.Guid.Data2
+      value: 1193288514
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850731600963670630, guid: 0fd560edc10257d418f6cc03259d83b6, type: 3}
+      propertyPath: EventReference.Guid.Data3
+      value: 467645318
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850731600963670630, guid: 0fd560edc10257d418f6cc03259d83b6, type: 3}
+      propertyPath: EventReference.Guid.Data4
+      value: 1571617664
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

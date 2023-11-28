@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 4593119423961701173}
   - component: {fileID: 440918667244453958}
   - component: {fileID: 2485108182699246023}
+  - component: {fileID: 3641734490615548873}
+  - component: {fileID: -1309024091094323464}
   m_Layer: 5
   m_Name: CardInHandContainer
   m_TagString: Untagged
@@ -54,6 +56,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardViewPrefab: {fileID: 4326507948408406445, guid: fbb233c8a0decb64f980d72930d1652e, type: 3}
   _animator: {fileID: 4593119423961701173}
+  _cardRedockEvent: {fileID: 3641734490615548873}
+  _cardSelectionEvent: {fileID: -1309024091094323464}
 --- !u!95 &4593119423961701173
 Animator:
   serializedVersion: 5
@@ -117,6 +121,68 @@ MonoBehaviour:
     Path: event:/SFX/Cards/Card_Draw
   Event: 
   PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &3641734490615548873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7764285812833003360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1082974891
+      Data2: 1248933058
+      Data3: -1709680505
+      Data4: -411921925
+    Path: event:/SFX/UI/UI_CannotPlay
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &-1309024091094323464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7764285812833003360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -881431159
+      Data2: 1278558613
+      Data3: 1319118478
+      Data4: -1248471009
+    Path: event:/SFX/UI/UI_CardSelect_V2
+  Event: 
+  PlayEvent: 0
   StopEvent: 0
   AllowFadeout: 1
   TriggerOnce: 0
