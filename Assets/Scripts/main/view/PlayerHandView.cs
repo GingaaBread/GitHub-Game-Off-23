@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
@@ -15,8 +16,10 @@ namespace main.view
     {
         private const float BASE_SPACING_AMOUNT = 100f;
         private const float CARD_SPACING_FACTOR = 15f;
-        private const float CARD_ROTATION_FACTOR = 15f;
-        private const float CARD_ROTATION_CAP = 60f;
+        private const float CARD_ROTATION_FACTOR = 5f;
+        private const float CARD_ROTATION_CAP = 45f;
+        private const float CARD_CURVE_RADIUS_VERTICAL = 2500f;
+        private const float CARD_CURVE_RADIUS_HORIZONTAL = 2500f;
 
         [SerializeField] private CardInHandContainer _cardViewContainerPrefab;
         [SerializeField] private HorizontalLayoutGroup _playerHandLayout;
@@ -76,7 +79,7 @@ namespace main.view
             yield return new WaitForSeconds(0.1f * offset);
 
             container.CreateChild(cardEntity, this);
-            ApplyRotationToChildren();
+            ApplyRotationAndOffsetToChildren();
         }
 
         private void RemoveCardAtIndex(int index)
@@ -84,7 +87,7 @@ namespace main.view
             var cardViewToRemove = _playerHandLayout.transform.GetChild(index);
             Destroy(cardViewToRemove.gameObject);
             IncreaseSpacing();
-            ApplyRotationToChildren();
+            ApplyRotationAndOffsetToChildren();
         }
 
         private void RemoveAll()
@@ -96,17 +99,27 @@ namespace main.view
             _playerHandLayout.spacing = BASE_SPACING_AMOUNT;
         }
 
-        public void ApplyRotationToChildren(){
-            List<CardInHandContainer> realChildren = new List<CardInHandContainer>();
+        public void ApplyRotationAndOffsetToChildren(){
+            List<CardInHandContainer> realChildren = new();
             foreach(Transform child in _playerHandLayout.transform){
                 CardInHandContainer component = child.GetComponent<CardInHandContainer>();
-                if(component && !component.IsBeingDiscarded()) realChildren.Add(component);
+                if(component) realChildren.Add(component);
             }
             int currentRotationFactor = Mathf.RoundToInt(-realChildren.Count / 2);
             foreach(CardInHandContainer cardInHand in realChildren){
-                if(realChildren.Count <= 1)cardInHand.ApplyRotation(0);
+                if(realChildren.Count <= 1){
+                    cardInHand.ApplyRotation(0);
+                    cardInHand.ApplyOffset(0);
+                }
                 else{
-                    cardInHand.ApplyRotation(Mathf.Clamp(currentRotationFactor * -CARD_ROTATION_FACTOR, -CARD_ROTATION_CAP, CARD_ROTATION_CAP));
+                    float rotation = Mathf.Clamp(currentRotationFactor * -CARD_ROTATION_FACTOR, -CARD_ROTATION_CAP, CARD_ROTATION_CAP);
+                    cardInHand.ApplyRotation(rotation);
+                    float theta = (90f - Mathf.Abs(rotation)) * Mathf.PI / 180;
+                    float sinSqared = (1 - Mathf.Cos(theta * 2))/2;
+                    float cosSquared = 1 - sinSqared;
+                    float floatRadiusForOffset = (CARD_CURVE_RADIUS_HORIZONTAL * CARD_CURVE_RADIUS_VERTICAL)/Mathf.Sqrt((CARD_CURVE_RADIUS_HORIZONTAL * CARD_CURVE_RADIUS_HORIZONTAL * sinSqared)+(CARD_CURVE_RADIUS_VERTICAL * CARD_CURVE_RADIUS_VERTICAL * cosSquared));//r = (ab)/sqrt((a^2)sinSq(theta)+(b^2)cosSq(theta))
+                    float offsetY = (floatRadiusForOffset * Mathf.Sin(theta)) - CARD_CURVE_RADIUS_VERTICAL;
+                    cardInHand.ApplyOffset(offsetY);
                     currentRotationFactor++;
                     if(currentRotationFactor == 0 && realChildren.Count % 2 == 0){
                         currentRotationFactor++;

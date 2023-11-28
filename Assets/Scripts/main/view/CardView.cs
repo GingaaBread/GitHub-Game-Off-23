@@ -27,6 +27,7 @@ namespace main.view
         [SerializeField] private Sprite _itemCardPanelSprite;
         private Vector3[] _bezierNodes;
         private float _bezierTargetCount;
+        public float desiredYOffset;
         private bool _isBeingDiscarded, _isBeingDrawn;
 
         private Transform _transform, _parent;
@@ -65,7 +66,7 @@ namespace main.view
         {
             _transform.SetParent(_parent);
             yield return new WaitForEndOfFrame();
-            RectTransform.anchoredPosition = Vector3.zero;
+            RectTransform.anchoredPosition = Vector2.up * desiredYOffset;
         }
 
         private void HandlePotentialDiscard()
@@ -129,6 +130,10 @@ namespace main.view
 
         public bool IsBeingDiscarded(){
             return _isBeingDiscarded;
+        }
+
+        public bool IsBeingDrawn(){
+            return _isBeingDrawn;
         }
     }
 }
