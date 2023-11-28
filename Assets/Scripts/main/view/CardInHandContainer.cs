@@ -110,5 +110,15 @@ namespace main.view
             UNPLAYABLE,
             IDLE
         }
+
+        public bool IsBeingDiscarded(){
+            if(_child)return _child.IsBeingDiscarded();
+            else return false;
+        }
+
+        public bool IsBeingDrawn(){
+            if(_child)return _child.IsBeingDrawn();
+            else return true;
+        }
     }
 }

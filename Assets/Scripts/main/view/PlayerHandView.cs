@@ -103,7 +103,7 @@ namespace main.view
             List<CardInHandContainer> realChildren = new();
             foreach(Transform child in _playerHandLayout.transform){
                 CardInHandContainer component = child.GetComponent<CardInHandContainer>();
-                if(component) realChildren.Add(component);
+                if(component && !component.IsBeingDiscarded()) realChildren.Add(component);
             }
             int currentRotationFactor = Mathf.RoundToInt(-realChildren.Count / 2);
             foreach(CardInHandContainer cardInHand in realChildren){
