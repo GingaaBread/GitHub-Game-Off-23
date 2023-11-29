@@ -19,8 +19,8 @@ namespace main.entity.Card_Management.Card_Effects
 
         public override void Execute()
         {
-            if(playerHandService != null)playerHandService.IncreaseTime(_amountOfTimeToGain);
-            else Debug.Log("No player hand service set for Time Gain!");
+            Debug.Log("Executing time gain CE");
+            playerHandService.IncreaseTime(_amountOfTimeToGain);
         }
     }
 }
