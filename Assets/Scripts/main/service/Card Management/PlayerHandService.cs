@@ -48,9 +48,7 @@ namespace main.service.Card_Management
 
         public void StartTurnDraw()
         {
-            for(int i = 0; i < playerHand.DrawAmount; i++){
-                Draw();
-            }
+            Draw();
         }
 
         /// <summary>
