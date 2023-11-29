@@ -140,5 +140,11 @@ namespace main.service.Card_Management
                 LogInfo("Triggered the OnCardDrawn event");
             }
         }
+
+        public void IncreaseTime(int amountOfTimeToGain){
+            turn.RemainingTime.Time += amountOfTimeToGain;
+            LogInfo($"Adding {amountOfTimeToGain} time, time is now {turn.RemainingTime.Time}");
+            OnTimeUnitChange.Invoke(turn.RemainingTime.Time);
+        }
     }
 }
