@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using main.entity.Card_Management;
 using main.entity.Card_Management.Card_Data;
 using main.repository;
@@ -27,7 +28,7 @@ namespace main.infrastructure
             var cards = new List<Card>();
             foreach (var cardCopies in deckDefinition.CardCopiesList)
             {
-                var copiesInStarterDeck = starterDeck.Cards.FindAll(card => card.Name.Equals(cardCopies.Card.Name));
+                var copiesInStarterDeck = starterDeck.Cards.ToList().FindAll(card => card.Name.Equals(cardCopies.Card.Name));
                 
                 var numberOfCopiesToAdd = cardCopies.NumberOfCopies - copiesInStarterDeck.Count;
                 

@@ -19,7 +19,7 @@ namespace main.entity.Card_Management.Card_Effects
         [SerializeField] private bool _affectsItemCards;
         [SerializeField] private bool _affectsAllCards;
 
-        public override void Execute()
+        public override void Execute(int multiplier)
         {
         }
     }

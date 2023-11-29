@@ -1228,6 +1228,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 702766963}
+  - component: {fileID: 702766964}
   m_Layer: 0
   m_Name: MenuMusic
   m_TagString: Untagged
@@ -1250,6 +1251,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &702766964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702766962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -276881837
+      Data2: 1093008940
+      Data3: -1390548325
+      Data4: -841528069
+    Path: event:/Music/Music_Play
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 1
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &758204959
 GameObject:
   m_ObjectHideFlags: 0
@@ -3349,11 +3381,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -420674393
-      Data2: 1251492708
-      Data3: 518574501
-      Data4: 2087934572
-    Path: event:/SFX/UI/UI_Click
+      Data1: 114854998
+      Data2: 1244522085
+      Data3: 1503122066
+      Data4: -91207337
+    Path: event:/SFX/UI/UI_StartGame
   Event: 
   PlayEvent: 0
   StopEvent: 0

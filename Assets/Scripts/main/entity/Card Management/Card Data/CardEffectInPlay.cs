@@ -10,8 +10,13 @@ namespace main.entity.Card_Management.Card_Data
         private int multiplier;
         private CardEffect effectBase;
 
+        public CardEffectInPlay(int multiplier, CardEffect effectBase){
+            this.multiplier = multiplier;
+            this.effectBase = effectBase;
+        }
+
         public void Execute(){
-            effectBase.Execute();
+            effectBase.Execute(multiplier);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace main.entity.Card_Management.Card_Effects
             this.playerHandService = playerHandService;
         }
 
-        public override void Execute()
+        public override void Execute(int multiplier)
         {
             playerHandService.IncreaseTime(_amountOfTimeToAddEachTurn);
         }

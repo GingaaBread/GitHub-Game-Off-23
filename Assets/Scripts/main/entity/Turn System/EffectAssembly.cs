@@ -15,6 +15,6 @@ namespace main.entity.Turn_System
         ///     The service should also be responsible for clearing this list once all effects have been executed.
         /// </summary>
         [NotNull]
-        public List<CardEffect> Effects { get; } = new();
+        public List<CardEffectInPlay> EffectsInPlay { get; } = new();
     }
 }

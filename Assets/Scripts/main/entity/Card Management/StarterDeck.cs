@@ -5,9 +5,9 @@ namespace main.entity.Card_Management
 {
     public class StarterDeck
     {
-        public List<Card> Cards { get; }
+        public IReadOnlyList<Card> Cards { get; }
 
-        public StarterDeck(List<Card> cards)
+        public StarterDeck(IReadOnlyList<Card> cards)
         {
             Cards = cards;
         }

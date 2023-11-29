@@ -2,6 +2,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
+using FMODUnity;
+
 
 namespace main.view
 {
@@ -10,8 +12,13 @@ namespace main.view
         [SerializeField] private GameObject _container;
         [SerializeField] private GameObject _gameOverWinText;
         [SerializeField] private GameObject _gameOverLossText;
+        [SerializeField] private StudioEventEmitter _gameMusic;
+        [SerializeField] private StudioEventEmitter _gameWinMusic;
+        [SerializeField] private StudioEventEmitter _gameLossMusic;
+
 
         private GameService gameService;
+        
 
         private void Awake()
         {
@@ -45,6 +52,11 @@ namespace main.view
             _gameOverWinText.SetActive(gameIsWon);
             _gameOverLossText.SetActive(!gameIsWon);
             _container.SetActive(true);
+            _gameMusic.Stop();
+            if (gameIsWon) _gameWinMusic.Play();
+            else _gameLossMusic.Play();
         }
+
+     
     }
 }

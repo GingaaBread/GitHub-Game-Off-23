@@ -2,7 +2,6 @@
 using JetBrains.Annotations;
 using main.entity.Card_Management;
 using main.entity.Card_Management.Card_Data;
-using UnityEngine.Assertions;
 
 namespace main.service.Card_Management
 {
@@ -36,19 +35,17 @@ namespace main.service.Card_Management
         /// <summary>
         ///     Removes a non-null card instance from the pool of discovered cards
         /// </summary>
-        /// <param name="cardToRemove">The non-null card reference to remove</param>
-        public void RemoveCard([NotNull] Card cardToRemove)
+        /// <param name="card">The non-null card reference to remove</param>
+        public void RemoveCard([NotNull] Card card)
         {
-            var refExisted = cardPool.Cards.Remove(cardToRemove);
-            Assert.IsTrue(refExisted, "Trying to remove a card from the card pool, which does not exist there");
-            LogInfo($"Removed card '{cardToRemove}' from the card pool");
+            card.RemoveFrom(cardPool.Cards);
         }
 
         /// <summary>
         ///     Yields the card pool as a newly copied list
         /// </summary>
         /// <returns>a copy of the card pool list</returns>
-        public List<Card> ToList()
+        public IEnumerable<Card> ToList()
         {
             return new List<Card>(cardPool.Cards);
         }

@@ -18,9 +18,13 @@ namespace main.entity.Card_Management.Card_Effects
             this.playerHandService = playerHandService;
         }
         
-        public override void Execute()
+        public override void Execute(int multiplier)
         {
-            playerHandService.Draw(amountOfCardsToDraw);
+            int cardsToDraw = amountOfCardsToDraw * multiplier;
+            while (cardsToDraw > 0){
+                playerHandService.Draw();
+                cardsToDraw--;
+            }
         }
     }
 }

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using main.entity.Card_Management.Card_Data;
-using UnityEngine;
+using main.infrastructure;
 using UnityEngine.Assertions;
 
 namespace main.entity.Card_Management
@@ -18,7 +18,7 @@ namespace main.entity.Card_Management
         ///     A new empty stack is created automatically.
         /// </summary>
         /// <returns>The non-null stack containing all cards in the pile</returns>
-        public Stack<Card> Pile { get; } = new();
+        public LinkedList<Card> Pile { get; } = new();
         
         /// <summary>
         ///     Creates a new empty pile
@@ -36,16 +36,11 @@ namespace main.entity.Card_Management
         public CardPile([NotNull] List<Card> cardsToFill, bool shuffle)
         {
             Assert.IsTrue(cardsToFill.Count > 0, "Should not try to fill card pile with an empty list.");
-
             if (shuffle)
-                while (cardsToFill.Count > 0)
-                {
-                    var indexToAddNext = Random.Range(0, cardsToFill.Count);
-                    Pile.Push(cardsToFill[indexToAddNext]);
-                    cardsToFill.RemoveAt(indexToAddNext);
-                }
-            else
-                cardsToFill.ForEach(Pile.Push);
+            {
+                cardsToFill.Shuffle();
+            }
+            cardsToFill.ForEach(card => Pile.AddFirst(card));
         }
     }
 }

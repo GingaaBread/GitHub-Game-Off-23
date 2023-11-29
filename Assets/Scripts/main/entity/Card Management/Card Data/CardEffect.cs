@@ -21,6 +21,6 @@ namespace main.entity.Card_Management.Card_Data
         ///     The card effect that extends this class implements the actual execute method, using
         ///     Debug.Log, etc.
         /// </summary>
-        public abstract void Execute();
+        public abstract void Execute(int multiplier);
     }
 }

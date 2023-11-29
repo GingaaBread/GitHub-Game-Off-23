@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using main.entity.Card_Management;
 using main.entity.Card_Management.Card_Data;
 using main.entity.Card_Management.Deck_Definition;
@@ -41,7 +42,8 @@ namespace test.EditMode.Turn_System
                 }
             }
             var starterDeck = new StarterDeck(starterDeckCards);
-            var deckService = new DeckService(new CardPile(), starterDeck);
+            var deckCardPile = new CardPile(starterDeck.Cards.ToList(), true);
+            var deckService = new DeckService(deckCardPile);
             var discardPileService = new DiscardPileService(new CardPile(), deckService);
             var cardPoolResourceLoader = new ResourceLoader<DeckDefinition>(ResourcePath.CardPool);
             var cardPoolDefinitionRepository = new DeckDefinitionRepository(cardPoolResourceLoader);
@@ -49,7 +51,7 @@ namespace test.EditMode.Turn_System
             var cardPoolCards = new List<Card>();
             foreach (var cardCopies in cardPoolDeckDefinition.CardCopiesList)
             {
-                var copiesInStarterDeck = starterDeck.Cards.FindAll(card => card.Equals(cardCopies.Card));
+                var copiesInStarterDeck = starterDeck.Cards.ToList().FindAll(card => card.Equals(cardCopies.Card));
                 var numberOfCopiesToAdd = cardCopies.NumberOfCopies - copiesInStarterDeck.Count;
                 for (var i = 0; i < numberOfCopiesToAdd; i++)
                 {
@@ -68,7 +70,6 @@ namespace test.EditMode.Turn_System
             var gameService = new GameService(game, turn, fishService);
             var cardSwapService = new CardSwapService(game, deckService, cardPoolService, discardPileService, turn);
             var turnService = new TurnService(turn, playerHandService, gameService, cardSwapService, effectAssemblyService);
-            deckService.Initialize();
             
             while (gameService.GameIsRunningJustForTest)
             {

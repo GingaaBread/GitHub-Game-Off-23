@@ -4,8 +4,8 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using main.entity.Card_Management;
 using main.entity.Card_Management.Card_Data;
+using main.infrastructure;
 using UnityEngine.Assertions;
-using Random = UnityEngine.Random;
 
 namespace main.service.Card_Management
 {
@@ -30,9 +30,14 @@ namespace main.service.Card_Management
         {
             LogInfo($"Discarding card '{card}'");
             
-            discardPile.Pile.Push(card);
+            discardPile.Pile.AddFirst(card);
             
             OnDiscard?.Invoke(card);
+        }
+        
+        public void RemoveCard(Card card)
+        {
+            card.RemoveFrom(discardPile.Pile);
         }
 
         /// <summary>
@@ -45,28 +50,32 @@ namespace main.service.Card_Management
 
             LogInfo("Shuffling the discard pile back into the deck");
 
-            // Gather all cards from the stack and save them in a list
-            var asList = new List<Card>();
-            while (discardPile.Pile.Count > 0) asList.Add(discardPile.Pile.Pop());
-
+            var cards = new List<Card>(discardPile.Pile);
+            
+            discardPile.Pile.Clear();
+            
             LogInfo("Removed all cards from the discard pile");
-
-            // Randomly add them back into the deck
-            while (asList.Count > 0)
-            {
-                var nextIndexToRemove = Random.Range(0, asList.Count);
-                deckService.AddCard(asList[nextIndexToRemove]);
-                asList.RemoveAt(nextIndexToRemove);
-            }
+            
+            cards.Shuffle();
+            
+            cards.ForEach(deckService.AddCard);
         }
 
         /// <summary>
         ///     Yields the discard pile as a list of cards
         /// </summary>
         /// <returns>The discard pile stack converted to a list</returns>
-        public List<Card> ToList()
+        public IEnumerable<Card> ToList()
         {
             return discardPile.Pile.ToList();
+        }
+
+        public int GetAmountInDiscardPile(Card refCard){
+            int valueToReturn = 0;
+            foreach(Card pileCard in discardPile.Pile){
+                if(pileCard == refCard) valueToReturn++;
+            }
+            return valueToReturn;
         }
     }
 }

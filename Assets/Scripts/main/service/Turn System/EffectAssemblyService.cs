@@ -23,22 +23,15 @@ namespace main.service.Turn_System
         }
 
         /// <summary>
-        ///     Either executes a card effect immediately or adds it to the <see cref="EffectAssembly" /> list to be
-        ///     executed at the end of the turn.
-        ///     Note that it will be deleted from the list at the end of the turn!
+        ///     Adds a non-null end-of-turn card effect to the <see cref="EffectAssembly" /> list.
+        ///     Note that it will be deleted from the list at the end of the next turn!
         /// </summary>
         /// <param name="cardEffect">The non-null <see cref="CardEffect" /> that should be executed at the end</param>
-        public void AddEffect([NotNull] CardEffect cardEffect)
+        public void AddEffect(int multiplier,[NotNull] CardEffect cardEffect)
         {
-            if (!cardEffect.IsEndTurnEffect)
-            {
-                cardEffect.Execute();
-            }
-            else
-            {
-                LogInfo($"Adding a new card effect to the end-of-turn effects: '{cardEffect}'");
-                effectAssembly.Effects.Add(cardEffect);
-            }
+            LogInfo($"Adding a new card effect to the end-of-turn effects: '{cardEffect}'");
+            CardEffectInPlay effectInPlay = new CardEffectInPlay(multiplier,cardEffect);
+            effectAssembly.EffectsInPlay.Add(effectInPlay);
         }
         
         /// <summary>
@@ -48,7 +41,7 @@ namespace main.service.Turn_System
         public void ExecuteAll()
         {
             LogInfo("Now executing all end of turn effects");
-            effectAssembly.Effects.ForEach(effect => effect.Execute());
+            effectAssembly.EffectsInPlay.ForEach(effectInPlay => effectInPlay.Execute());
             Clear();
             LogInfo("Successfully executed all end-of-turn effects");
         }
@@ -58,7 +51,7 @@ namespace main.service.Turn_System
         /// </summary>
         private void Clear()
         {
-            effectAssembly.Effects.Clear();
+            effectAssembly.EffectsInPlay.Clear();
         }
     }
 }

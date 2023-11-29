@@ -15,7 +15,7 @@ namespace main.entity.Card_Management.Card_Effects
         [FormerlySerializedAs("message")] [SerializeField]
         private string _message;
 
-        public override void Execute()
+        public override void Execute(int multiplier)
         {
             Debug.Log("My message is " + _message);
         }

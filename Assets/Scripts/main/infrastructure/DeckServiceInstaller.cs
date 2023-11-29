@@ -1,3 +1,4 @@
+using System.Linq;
 using main.entity.Card_Management;
 using main.service.Card_Management;
 using UnityEngine;
@@ -11,20 +12,16 @@ namespace main.infrastructure
         
         public override void InstallBindings()
         {
-            Container.Bind<CardPile>()
-                .WithId("DeckService")
-                .AsTransient();
-            
             Container.BindInterfacesAndSelfTo<DeckService>()
                 .FromMethod(CreateDeckService)
                 .AsSingle();
         }
 
-        private static DeckService CreateDeckService(InjectContext ctx)
+        private DeckService CreateDeckService(InjectContext ctx)
         {
-            var cardPile = ctx.Container.ResolveId<CardPile>("DeckService");
             var starterDeck = ctx.Container.Resolve<StarterDeck>();
-            return new DeckService(cardPile, starterDeck);
+            var cardPile = new CardPile(starterDeck.Cards.ToList(), shuffleOnCreation);
+            return new DeckService(cardPile);
         }
     }
 }

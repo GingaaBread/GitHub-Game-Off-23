@@ -20,6 +20,7 @@ namespace main.view
         [SerializeField] private TMP_Text _cardDescriptionText;
         [SerializeField] private TMP_Text _cardCostText;
         [SerializeField] private TMP_Text _cardValueText;
+        [SerializeField] private TMP_Text _cardMultiplierText;
         [SerializeField] private Image _cardTypeSpriteImage;
         [SerializeField] private Image _cardIconSpriteImage;
         [SerializeField] private Image[] _selectionOutlineImages;
@@ -135,6 +136,14 @@ namespace main.view
             _cardCostText.text = Card.TimeCost.ToString();
             _cardValueText.text = Card.Rarity.ToString();
             _cardDescriptionText.text = Card.Description();
+
+            if(Card.Multiplier < 2){
+                if(_cardMultiplierText)_cardMultiplierText.gameObject.SetActive(false);
+            }
+            else{
+                if(_cardMultiplierText)_cardMultiplierText.text = "x" + Card.Multiplier.ToString();
+                if(_cardMultiplierText)_cardMultiplierText.gameObject.SetActive(true);
+            }
 
             _cardIconSpriteImage.sprite = Card.IconSprite;
             _cardTypeSpriteImage.sprite = Card switch
