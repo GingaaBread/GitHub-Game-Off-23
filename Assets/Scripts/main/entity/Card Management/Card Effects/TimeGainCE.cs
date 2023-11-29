@@ -1,21 +1,26 @@
 using main.entity.Card_Management.Card_Data;
+using main.service.Card_Management;
 using UnityEngine;
-using UnityEngine.Serialization;
+using Zenject;
 
 namespace main.entity.Card_Management.Card_Effects
 {
-    /// <summary>
-    ///     A simple example of how classes can define card effects.
-    ///     This simply defines a field "message" that will be printed upon execution.
-    ///     NOTE: Can be removed once the actual card effects exist.
-    /// </summary>
-    [CreateAssetMenu(fileName = "TimeGainCE", menuName = "Data/Effects/New TimeGainCE")]
+    [CreateAssetMenu(fileName = "Time Gain", menuName = "Data/Effects/Time Gain")]
     public class TimeGainCE : CardEffect
     {
         [SerializeField] private int _amountOfTimeToGain;
+        private PlayerHandService playerHandService;
+
+        [Inject]
+        public void Construct(PlayerHandService playerHandService)
+        {
+            this.playerHandService = playerHandService;
+        }
 
         public override void Execute()
         {
+            if(playerHandService != null)playerHandService.IncreaseTime(_amountOfTimeToGain);
+            else Debug.Log("No player hand service set for Time Gain!");
         }
     }
 }

@@ -135,5 +135,11 @@ namespace main.service.Card_Management
         {
             return card.TimeCost <= turn.RemainingTime.Time;
         }
+
+        public void IncreaseTime(int timeToAdd){
+            turn.RemainingTime.Time += timeToAdd;
+            LogInfo($"Adding {timeToAdd} time, time is now {turn.RemainingTime.Time}");
+            OnTimeUnitChange.Invoke(turn.RemainingTime.Time);
+        }
     }
 }
