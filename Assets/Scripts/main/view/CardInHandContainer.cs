@@ -19,6 +19,7 @@ namespace main.view
         }
 
         private const float CLAMP_WIDTH = 20f, CLAMP_HEIGHT = 10f, PLAY_HEIGHT_LIMIT = -6.5f;
+        private float desiredYOffset, desiredRotation;
 
         [SerializeField] private CardView _cardViewPrefab;
         [SerializeField] private Animator _animator;
@@ -51,6 +52,7 @@ namespace main.view
                 _cardSelectionEvent.Play();
                 _hasEnoughTimeToPlay = true;
                 PlayerHandCanvas.Instance.SetAsDirectChild(CardView.transform);
+                CardView.ApplyRotation(0);
                 _playState = CardPlayState.UNPLAYABLE;
             }
             else
@@ -105,11 +107,12 @@ namespace main.view
                 case CardPlayState.UNPLAYABLE:
                     _cardRedockEvent.Play();
                     _childRectTransform.SetParent(transform);
-                    _childRectTransform.anchoredPosition = Vector2.zero;
+                    playerHandView.ApplyRotationAndOffsetToChildren();
                     break;
                 case CardPlayState.PLAYABLE:
                     playerHandView.IncreaseSpacing();
                     playerHandView.PlayCard(CardView.Card);
+                    playerHandView.ApplyRotationAndOffsetToChildren();
                     break;
                 case CardPlayState.IDLE:
                 default:
@@ -137,6 +140,8 @@ namespace main.view
             var newCardView = Instantiate(_cardViewPrefab, transform);
             CardView = newCardView;
             _childRectTransform = CardView.RectTransform;
+            CardView.ApplyOffset(desiredYOffset);
+            CardView.ApplyRotation(desiredRotation);
 
             PlayerHandCanvas.Instance.SetAsDirectChild(newCardView.transform);
 
@@ -145,6 +150,21 @@ namespace main.view
             SetUsabilityColourOfCardView(-1);
 
             _playState = CardPlayState.IDLE;
+        }
+
+        public bool IsBeingDiscarded(){
+            if(CardView) return CardView.IsBeingDiscarded();
+            else return false;
+        }
+
+        public void ApplyRotation(float rotZ){
+            this.desiredRotation = rotZ;
+            if(CardView) CardView.ApplyRotation(rotZ);
+        }
+
+        public void ApplyOffset(float desiredYOffset){
+            this.desiredYOffset = desiredYOffset;
+            if(CardView) CardView.ApplyOffset(desiredYOffset);
         }
     }
 }
