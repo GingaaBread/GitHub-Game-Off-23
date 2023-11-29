@@ -19,8 +19,8 @@ namespace main.entity.Card_Management.Card_Effects
 
         public override void Execute(int multiplier)
         {
-            Debug.Log("Executing time gain CE");
-            playerHandService.IncreaseTime(_amountOfTimeToGain);
+            Debug.Log("Increasing Time");
+            playerHandService.IncreaseTime(_amountOfTimeToGain * multiplier);
         }
     }
 }

@@ -29,9 +29,15 @@ namespace main.service.Turn_System
         /// <param name="cardEffect">The non-null <see cref="CardEffect" /> that should be executed at the end</param>
         public void AddEffect(int multiplier,[NotNull] CardEffect cardEffect)
         {
-            LogInfo($"Adding a new card effect to the end-of-turn effects: '{cardEffect}'");
-            CardEffectInPlay effectInPlay = new CardEffectInPlay(multiplier,cardEffect);
-            effectAssembly.EffectsInPlay.Add(effectInPlay);
+            if(!cardEffect.IsEndTurnEffect){
+                LogInfo($"Running an immediate effect: '{cardEffect}'");
+                cardEffect.Execute(multiplier);
+            }
+            else{
+                LogInfo($"Adding a new card effect to the end-of-turn effects: '{cardEffect}'");
+                CardEffectInPlay effectInPlay = new CardEffectInPlay(multiplier,cardEffect);
+                effectAssembly.EffectsInPlay.Add(effectInPlay);
+            }
         }
         
         /// <summary>

@@ -4823,6 +4823,9 @@ MonoBehaviour:
   _container: {fileID: 503514484}
   _gameOverWinText: {fileID: 2130609737}
   _gameOverLossText: {fileID: 1307611312}
+  _gameMusic: {fileID: 0}
+  _gameWinMusic: {fileID: 0}
+  _gameLossMusic: {fileID: 0}
 --- !u!1 &838317619
 GameObject:
   m_ObjectHideFlags: 0

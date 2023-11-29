@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b38767c4cab9adf4582117b264b926d7, type: 3}
   m_Name: Scale Fish With Time Bonus (Tweezers)
   m_EditorClassIdentifier: 
+  isEndTurnEffect: 1
   _baseAmountOfScales: 10
   _bonusAmountForEachRemainingTime: 10

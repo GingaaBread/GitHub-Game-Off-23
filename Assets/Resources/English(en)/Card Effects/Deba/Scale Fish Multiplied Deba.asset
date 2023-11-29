@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72c11a16424e58145ac4c2a6d79fb94f, type: 3}
   m_Name: Scale Fish Multiplied Deba
   m_EditorClassIdentifier: 
+  isEndTurnEffect: 1
   _baseAmountOfScales: 5
   _incrementAmountOfScales: 2
   _multiplyOnceForEachCardNamePlayed: 1

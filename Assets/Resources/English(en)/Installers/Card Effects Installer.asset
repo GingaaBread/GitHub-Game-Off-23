@@ -13,19 +13,16 @@ MonoBehaviour:
   m_Name: Card Effects Installer
   m_EditorClassIdentifier: 
   cardEffects:
-  - {fileID: 11400000, guid: 4310e20a3a1e827468fe2ca72e47ca29, type: 2}
   - {fileID: 11400000, guid: cf3013747d9918748b5d2d5edf11d06e, type: 2}
+  - {fileID: 11400000, guid: 77a9be2f0c49fa547a6d0798944b0422, type: 2}
+  - {fileID: 11400000, guid: 4310e20a3a1e827468fe2ca72e47ca29, type: 2}
   - {fileID: 11400000, guid: 6c9f83fb257c2094b9ac8ee891a5996f, type: 2}
   - {fileID: 11400000, guid: bce10cf7939fff64e97bdd9500cca0f5, type: 2}
   - {fileID: 11400000, guid: 0ace2e8f067b07c458c13e3a82ae97f8, type: 2}
-  - {fileID: 11400000, guid: 77a9be2f0c49fa547a6d0798944b0422, type: 2}
   - {fileID: 11400000, guid: 50c11499b123bc144a40c1299fd4cbcf, type: 2}
   - {fileID: 11400000, guid: ad9a03da3350b4044abb4055fbdaf209, type: 2}
   - {fileID: 11400000, guid: 92787116135c2ea44b4d7d4baeb9af08, type: 2}
-<<<<<<< HEAD
-  - {fileID: 11400000, guid: 40e06f9db52ae084a9cda8f0f4a7b207, type: 2}
-=======
   - {fileID: 11400000, guid: 4e8c8b9fb19073449bdf48d4f9224eb8, type: 2}
   - {fileID: 11400000, guid: 7126ed75004bbec42b3aee7807ce94a5, type: 2}
   - {fileID: 11400000, guid: ba615e75694da6b438019b73a17b6126, type: 2}
->>>>>>> dev
+  - {fileID: 11400000, guid: 40e06f9db52ae084a9cda8f0f4a7b207, type: 2}

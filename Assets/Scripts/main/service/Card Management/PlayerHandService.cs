@@ -181,12 +181,11 @@ namespace main.service.Card_Management
             }
         }
 
-<<<<<<< HEAD
         public void IncreaseTime(int amountOfTimeToGain){
             turn.RemainingTime.Time += amountOfTimeToGain;
             LogInfo($"Adding {amountOfTimeToGain} time, time is now {turn.RemainingTime.Time}");
             OnTimeUnitChange.Invoke(turn.RemainingTime.Time);
-=======
+        }
         public bool CardHasEnoughTime(Card card)
         {
             return card.TimeCost <= turn.RemainingTime.Time;
@@ -205,7 +204,6 @@ namespace main.service.Card_Management
         public int RemainingCards()
         {
             return playerHand.HandCards.Count;
->>>>>>> dev
         }
     }
 }

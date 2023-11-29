@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82efaba307eeb09458b4f2430140c952, type: 3}
   m_Name: Scale Fish With Hand Card Size Bonus (Yanagiba)
   m_EditorClassIdentifier: 
+  isEndTurnEffect: 1
   _baseAmountOfScales: 10
   _bonusAmountForEachCardInHand: 25
