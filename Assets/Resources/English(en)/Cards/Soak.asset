@@ -21,3 +21,4 @@ MonoBehaviour:
     time: 2
   _cardEffects:
   - {fileID: 11400000, guid: 0ace2e8f067b07c458c13e3a82ae97f8, type: 2}
+  - {fileID: 11400000, guid: 77a9be2f0c49fa547a6d0798944b0422, type: 2}

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 520ea8083f6d3a149bb321a28468ff73, type: 3}
   m_Name: Remove Scales Deba
   m_EditorClassIdentifier: 
+  isEndTurnEffect: 1
   amountOfScalesToRemove: 5
-  applyImmediately: 0

@@ -23,14 +23,22 @@ namespace main.service.Turn_System
         }
 
         /// <summary>
-        ///     Adds a non-null end-of-turn card effect to the <see cref="EffectAssembly" /> list.
-        ///     Note that it will be deleted from the list at the end of the next turn!
+        ///     Either executes a card effect immediately or adds it to the <see cref="EffectAssembly" /> list to be
+        ///     executed at the end of the turn.
+        ///     Note that it will be deleted from the list at the end of the turn!
         /// </summary>
         /// <param name="cardEffect">The non-null <see cref="CardEffect" /> that should be executed at the end</param>
         public void AddEffect([NotNull] CardEffect cardEffect)
         {
-            LogInfo($"Adding a new card effect to the end-of-turn effects: '{cardEffect}'");
-            effectAssembly.Effects.Add(cardEffect);
+            if (!cardEffect.IsEndTurnEffect)
+            {
+                cardEffect.Execute();
+            }
+            else
+            {
+                LogInfo($"Adding a new card effect to the end-of-turn effects: '{cardEffect}'");
+                effectAssembly.Effects.Add(cardEffect);
+            }
         }
         
         /// <summary>

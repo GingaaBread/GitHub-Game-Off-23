@@ -10,6 +10,10 @@ namespace main.entity.Card_Management.Card_Data
     /// </summary>
     public abstract class CardEffect : ScriptableObject
     {
+        [SerializeField] private bool isEndTurnEffect;
+
+        public bool IsEndTurnEffect => isEndTurnEffect;
+
         /// <summary>
         ///     Determines the behaviour of the card effect.
         ///     An example execution could be a card effect that prints a message to the console.
