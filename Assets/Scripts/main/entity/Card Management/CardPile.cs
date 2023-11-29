@@ -18,7 +18,7 @@ namespace main.entity.Card_Management
         ///     A new empty stack is created automatically.
         /// </summary>
         /// <returns>The non-null stack containing all cards in the pile</returns>
-        public Stack<Card> Pile { get; } = new();
+        public LinkedList<Card> Pile { get; } = new();
         
         /// <summary>
         ///     Creates a new empty pile
@@ -40,7 +40,7 @@ namespace main.entity.Card_Management
             {
                 cardsToFill.Shuffle();
             }
-            cardsToFill.ForEach(Pile.Push);
+            cardsToFill.ForEach(card => Pile.AddFirst(card));
         }
     }
 }

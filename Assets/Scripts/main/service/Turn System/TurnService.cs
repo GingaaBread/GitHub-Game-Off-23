@@ -33,7 +33,6 @@ namespace main.service.Turn_System
         {
             this.turn = turn;
             this.playerHandService = playerHandService;
-            OnNewTurnStart.AddListener(this.playerHandService.ResetPlayedCardCounter);
             this.gameService = gameService;
             this.cardSwapService = cardSwapService;
             this.effectAssemblyService = effectAssemblyService;

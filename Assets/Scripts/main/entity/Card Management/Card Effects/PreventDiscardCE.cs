@@ -13,7 +13,7 @@ namespace main.entity.Card_Management.Card_Effects
     public class PreventDiscardCE : CardEffect
     {
 
-        public override void Execute(int multiplier)
+        public override void Execute()
         {
         }
     }

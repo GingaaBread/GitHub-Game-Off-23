@@ -14,7 +14,7 @@ namespace main.entity.Card_Management.Card_Effects
     {
         [SerializeField] private int _additionalAmountOfCardsToDraw;
 
-        public override void Execute(int multiplier)
+        public override void Execute()
         {
         }
     }

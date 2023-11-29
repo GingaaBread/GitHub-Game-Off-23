@@ -5,7 +5,7 @@ using Zenject;
 
 namespace main.entity.Card_Management.Card_Effects
 {
-    [CreateAssetMenu(fileName = "Remove Scales", menuName = "Data/Effects/Remove Scales")]
+    [CreateAssetMenu(fileName = "Remove Scales", menuName = "Data/Card Effect/Remove Scales")]
     public class RemoveScalesCardEffect : CardEffect
     {
         [SerializeField] private int amountOfScalesToRemove;
@@ -18,14 +18,9 @@ namespace main.entity.Card_Management.Card_Effects
             this.fishService = fishService;
         }
         
-        public override void Execute(int multiplier)
+        public override void Execute()
         {
-            int scalesToRemove = AmountOfScalesToRemove() * multiplier;
-            fishService.ScaleFish(scalesToRemove);
-        }
-
-        public int AmountOfScalesToRemove(){
-            return amountOfScalesToRemove;
+            fishService.ScaleFish(amountOfScalesToRemove);
         }
     }
 }

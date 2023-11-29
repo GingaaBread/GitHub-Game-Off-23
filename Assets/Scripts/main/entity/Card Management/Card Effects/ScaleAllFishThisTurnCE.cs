@@ -16,7 +16,7 @@ namespace main.entity.Card_Management.Card_Effects
         [SerializeField] private float _relativeAmountOfScales;
         [SerializeField] private ItemCard _asLongAsItemOnBoard;
 
-        public override void Execute(int multiplier)
+        public override void Execute()
         {
         }
     }

@@ -357,7 +357,6 @@ RectTransform:
   - {fileID: 240791074}
   - {fileID: 63112221819501914}
   - {fileID: 1044751245733905007}
-  - {fileID: 455816398151761226}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1818,7 +1817,6 @@ MonoBehaviour:
   _cardDescriptionText: {fileID: 838317621}
   _cardCostText: {fileID: 2186664}
   _cardValueText: {fileID: 1562275295}
-  _cardMultiplierText: {fileID: 0}
   _cardTypeSpriteImage: {fileID: 452467002}
   _cardIconSpriteImage: {fileID: 372400764}
   _selectionOutlineImages:
@@ -2129,7 +2127,6 @@ MonoBehaviour:
   _cardDescriptionText: {fileID: 495939556}
   _cardCostText: {fileID: 482065711}
   _cardValueText: {fileID: 1616274893}
-  _cardMultiplierText: {fileID: 0}
   _cardTypeSpriteImage: {fileID: 1268855489}
   _cardIconSpriteImage: {fileID: 758625368}
   _selectionOutlineImages:
@@ -2188,7 +2185,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960.00006, y: 0}
+  m_AnchoredPosition: {x: 960.00006, y: -553.9469}
   m_SizeDelta: {x: 1167.5763, y: 411.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &358390867
@@ -2329,7 +2326,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960.00006, y: 0}
+  m_AnchoredPosition: {x: 960.00006, y: -134.81126}
   m_SizeDelta: {x: 985.0651, y: 112.6738}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &446567286
@@ -2481,6 +2478,7 @@ GameObject:
   - component: {fileID: 452467003}
   - component: {fileID: 452467002}
   - component: {fileID: 452467004}
+  - component: {fileID: 452467005}
   m_Layer: 5
   m_Name: CardPanelImage
   m_TagString: Untagged
@@ -2607,6 +2605,49 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 452467005}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &452467005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452467000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -420674393
+      Data2: 1251492708
+      Data3: 518574501
+      Data4: 2087934572
+    Path: event:/SFX/UI/UI_Click
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &453488526
 GameObject:
   m_ObjectHideFlags: 0
@@ -3385,6 +3426,7 @@ GameObject:
   - component: {fileID: 561193617}
   - component: {fileID: 561193616}
   - component: {fileID: 561193618}
+  - component: {fileID: 561193619}
   m_Layer: 5
   m_Name: CardPanelImage
   m_TagString: Untagged
@@ -3511,6 +3553,49 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 561193619}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &561193619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561193614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 667056334
+      Data2: 1183534345
+      Data3: -485628999
+      Data4: -540097525
+    Path: event:/SFX/UI/UI_CardDiscardSelect
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &562563162
 GameObject:
   m_ObjectHideFlags: 0
@@ -3647,7 +3732,6 @@ MonoBehaviour:
   _cardDescriptionText: {fileID: 874117964}
   _cardCostText: {fileID: 1964699468}
   _cardValueText: {fileID: 1450749806}
-  _cardMultiplierText: {fileID: 0}
   _cardTypeSpriteImage: {fileID: 561193616}
   _cardIconSpriteImage: {fileID: 1523277379}
   _selectionOutlineImages:
@@ -4104,7 +4188,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: 0}
+  m_AnchoredPosition: {x: 973.5149, y: -627.207}
   m_SizeDelta: {x: 883.14, y: 185.8308}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &639551343
@@ -4717,6 +4801,8 @@ GameObject:
   - component: {fileID: 802451502}
   - component: {fileID: 802451501}
   - component: {fileID: 802451505}
+  - component: {fileID: 802451507}
+  - component: {fileID: 802451506}
   m_Layer: 5
   m_Name: GameOverCanvas
   m_TagString: Untagged
@@ -4823,6 +4909,71 @@ MonoBehaviour:
   _container: {fileID: 503514484}
   _gameOverWinText: {fileID: 2130609737}
   _gameOverLossText: {fileID: 1307611312}
+  _gameMusic: {fileID: 1886832651}
+  _gameWinMusic: {fileID: 802451507}
+  _gameLossMusic: {fileID: 802451506}
+--- !u!114 &802451506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802451500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 587045391
+      Data2: 1280127931
+      Data3: 327467651
+      Data4: 1526121637
+    Path: event:/Music/Music_Defeat
+  Event: 
+  PlayEvent: 0
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &802451507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802451500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 500788705
+      Data2: 1178852583
+      Data3: -1499309414
+      Data4: 457488156
+    Path: event:/Music/Music_Victory
+  Event: 
+  PlayEvent: 0
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &838317619
 GameObject:
   m_ObjectHideFlags: 0
@@ -5969,6 +6120,7 @@ GameObject:
   - component: {fileID: 1071887402}
   - component: {fileID: 1071887401}
   - component: {fileID: 1071887403}
+  - component: {fileID: 1071887404}
   m_Layer: 5
   m_Name: CardPanelImage
   m_TagString: Untagged
@@ -6095,6 +6247,49 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1071887404}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1071887404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071887399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -420674393
+      Data2: 1251492708
+      Data3: 518574501
+      Data4: 2087934572
+    Path: event:/SFX/UI/UI_Click
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1100943373
 GameObject:
   m_ObjectHideFlags: 0
@@ -6247,6 +6442,7 @@ GameObject:
   - component: {fileID: 1122735808}
   - component: {fileID: 1122735807}
   - component: {fileID: 1122735809}
+  - component: {fileID: 1122735810}
   m_Layer: 5
   m_Name: WarningTimeText
   m_TagString: Untagged
@@ -6408,9 +6604,52 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+      - m_Target: {fileID: 1122735810}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   references:
     version: 2
     RefIds: []
+--- !u!114 &1122735810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122735805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1544244729
+      Data2: 1280844093
+      Data3: 1208743070
+      Data4: -1959191583
+    Path: event:/SFX/UI/UI_Warning
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1123232071
 GameObject:
   m_ObjectHideFlags: 0
@@ -6448,7 +6687,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960.00006, y: -483.0819}
+  m_AnchoredPosition: {x: 960.00006, y: -553.9469}
   m_SizeDelta: {x: 1167.5763, y: 411.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1123232073
@@ -7311,6 +7550,7 @@ GameObject:
   - component: {fileID: 1268855490}
   - component: {fileID: 1268855489}
   - component: {fileID: 1268855491}
+  - component: {fileID: 1268855492}
   m_Layer: 5
   m_Name: CardPanelImage
   m_TagString: Untagged
@@ -7437,6 +7677,49 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1268855492}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1268855492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268855487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 667056334
+      Data2: 1183534345
+      Data3: -485628999
+      Data4: -540097525
+    Path: event:/SFX/UI/UI_CardDiscardSelect
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1307611312
 GameObject:
   m_ObjectHideFlags: 0
@@ -7455,7 +7738,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1307611313
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7473,7 +7756,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: 0}
+  m_AnchoredPosition: {x: 960, y: -541.7882}
   m_SizeDelta: {x: 1083.3428, y: 94.7036}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1307611314
@@ -8308,7 +8591,6 @@ MonoBehaviour:
   _cardDescriptionText: {fileID: 2059139053}
   _cardCostText: {fileID: 1339382793}
   _cardValueText: {fileID: 551415341}
-  _cardMultiplierText: {fileID: 0}
   _cardTypeSpriteImage: {fileID: 2020846877}
   _cardIconSpriteImage: {fileID: 1565661523}
   _selectionOutlineImages:
@@ -8507,9 +8789,9 @@ RectTransform:
   m_Father: {fileID: 1191638382}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1087.3739, y: -848.6373}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 250, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1415614961
@@ -8548,11 +8830,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -420674393
-      Data2: 1251492708
-      Data3: 518574501
-      Data4: 2087934572
-    Path: event:/SFX/UI/UI_Click
+      Data1: 707446836
+      Data2: 1269199049
+      Data3: -1048161387
+      Data4: -927435472
+    Path: event:/SFX/Cards/Card_Discard
   Event: 
   PlayEvent: 0
   StopEvent: 0
@@ -9821,7 +10103,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: 0}
+  m_AnchoredPosition: {x: 973.5149, y: -392.23618}
   m_SizeDelta: {x: 788.2991, y: 94.7036}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1633728470
@@ -10506,7 +10788,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960.00006, y: -111.189606}
+  m_AnchoredPosition: {x: 960.00006, y: -134.81126}
   m_SizeDelta: {x: 985.0651, y: 112.6738}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1749520024
@@ -11227,7 +11509,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1886832649}
-  - component: {fileID: 1886832648}
+  - component: {fileID: 1886832651}
+  - component: {fileID: 1886832650}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
@@ -11235,7 +11518,53 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1886832648
+--- !u!4 &1886832649
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886832647}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.13507752, y: -0.79166526, z: 30.64386}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1886832650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886832647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1792599348
+      Data2: 1198506195
+      Data3: 124669850
+      Data4: -858576433
+    Path: snapshot:/MasterLPOff
+  Event: 
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 1
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
+--- !u!114 &1886832651
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11257,30 +11586,17 @@ MonoBehaviour:
     Path: event:/Music/Music_Play
   Event: 
   PlayEvent: 1
-  StopEvent: 0
+  StopEvent: 2
   AllowFadeout: 1
-  TriggerOnce: 0
+  TriggerOnce: 1
   Preload: 0
   AllowNonRigidbodyDoppler: 0
-  Params: []
+  Params:
+  - Name: Game Over
+    Value: 0
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
---- !u!4 &1886832649
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1886832647}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.13507752, y: -0.79166526, z: 30.64386}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 17
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1889787306
 GameObject:
   m_ObjectHideFlags: 0
@@ -12020,6 +12336,7 @@ GameObject:
   - component: {fileID: 2020846878}
   - component: {fileID: 2020846877}
   - component: {fileID: 2020846879}
+  - component: {fileID: 2020846880}
   m_Layer: 5
   m_Name: CardPanelImage
   m_TagString: Untagged
@@ -12146,6 +12463,49 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2020846880}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2020846880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020846875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -420674393
+      Data2: 1251492708
+      Data3: 518574501
+      Data4: 2087934572
+    Path: event:/SFX/UI/UI_Click
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &2036252553
 GameObject:
   m_ObjectHideFlags: 0
@@ -12282,7 +12642,6 @@ MonoBehaviour:
   _cardDescriptionText: {fileID: 769410118}
   _cardCostText: {fileID: 1183443497}
   _cardValueText: {fileID: 1190342855}
-  _cardMultiplierText: {fileID: 0}
   _cardTypeSpriteImage: {fileID: 1071887401}
   _cardIconSpriteImage: {fileID: 1884436989}
   _selectionOutlineImages:
@@ -12809,7 +13168,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: 0}
+  m_AnchoredPosition: {x: 973.5149, y: -486.93976}
   m_SizeDelta: {x: 1083.3428, y: 94.7036}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2130609739
@@ -17943,6 +18302,7 @@ GameObject:
   - component: {fileID: 3241826435105264382}
   - component: {fileID: 8327313813307722837}
   - component: {fileID: 8327313813307722838}
+  - component: {fileID: 8327313813307722839}
   m_Layer: 5
   m_Name: CardPanelImage
   m_TagString: Untagged
@@ -18170,11 +18530,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd262c4ed65af2d44a157897ced597a8, type: 3}
---- !u!224 &455816398151761226 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 677424231128400155, guid: d67bdaf91681efd41a7e2049295da49a, type: 3}
-  m_PrefabInstance: {fileID: 7166842080414087261}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &551988220501483536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18273,7 +18628,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: 0}
+  m_AnchoredPosition: {x: 960, y: -652.6342}
   m_SizeDelta: {x: 883.14, y: 185.8308}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &717168609969615400
@@ -18491,7 +18846,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: 0}
+  m_AnchoredPosition: {x: 960, y: -494.4364}
   m_SizeDelta: {x: 1083.3428, y: 130.5648}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &981656628074646130
@@ -18675,7 +19030,6 @@ MonoBehaviour:
   _cardDescriptionText: {fileID: 5801647027284714113}
   _cardCostText: {fileID: 2797473390670691262}
   _cardValueText: {fileID: 2239460428166221734}
-  _cardMultiplierText: {fileID: 0}
   _cardTypeSpriteImage: {fileID: 8327313813307722837}
   _cardIconSpriteImage: {fileID: 8548506084594477600}
   _selectionOutlineImages:
@@ -19563,11 +19917,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -420674393
-      Data2: 1251492708
-      Data3: 518574501
-      Data4: 2087934572
-    Path: event:/SFX/UI/UI_Click
+      Data1: -1601965772
+      Data2: 1313246335
+      Data3: -2015550814
+      Data4: -251444315
+    Path: event:/SFX/UI/UI_StayInGame
   Event: 
   PlayEvent: 0
   StopEvent: 0
@@ -20415,11 +20769,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -420674393
-      Data2: 1251492708
-      Data3: 518574501
-      Data4: 2087934572
-    Path: event:/SFX/UI/UI_Click
+      Data1: -1601965772
+      Data2: 1313246335
+      Data3: -2015550814
+      Data4: -251444315
+    Path: event:/SFX/UI/UI_StayInGame
   Event: 
   PlayEvent: 0
   StopEvent: 0
@@ -20505,7 +20859,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: 0}
+  m_AnchoredPosition: {x: 960, y: -381.80222}
   m_SizeDelta: {x: 788.2991, y: 94.7036}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4918270398309244285
@@ -21964,107 +22318,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6346450934394654707}
   m_CullTransparentMesh: 1
---- !u!1001 &7166842080414087261
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 5669360}
-    m_Modifications:
-    - target: {fileID: 677424231128400155, guid: d67bdaf91681efd41a7e2049295da49a, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 677424231128400155, guid: d67bdaf91681efd41a7e2049295da49a, type: 3}
-      propertyPath: m_Pivot.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 677424231128400155, guid: d67bdaf91681efd41a7e2049295da49a, type: 3}
-      propertyPath: m_RootOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 677424231128400155, guid: d67bdaf91681efd41a7e2049295da49a, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 677424231128400155, guid: d67bdaf91681efd41a7e2049295da49a, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 677424231128400155, guid: d67bdaf91681efd41a7e2049295da49a, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 677424231128400155, guid: d67bdaf91681efd41a7e2049295da49a, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 677424231128400155, guid: d67bdaf91681efd41a7e2049295da49a, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 348.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 677424231128400155, guid: d67bdaf91681efd41a7e2049295da49a, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 677424231128400155, guid: d67bdaf91681efd41a7e2049295da49a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 677424231128400155, guid: d67bdaf91681efd41a7e2049295da49a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 677424231128400155, guid: d67bdaf91681efd41a7e2049295da49a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 677424231128400155, guid: d67bdaf91681efd41a7e2049295da49a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 677424231128400155, guid: d67bdaf91681efd41a7e2049295da49a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 677424231128400155, guid: d67bdaf91681efd41a7e2049295da49a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 677424231128400155, guid: d67bdaf91681efd41a7e2049295da49a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 677424231128400155, guid: d67bdaf91681efd41a7e2049295da49a, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -217.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 677424231128400155, guid: d67bdaf91681efd41a7e2049295da49a, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -129.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 677424231128400155, guid: d67bdaf91681efd41a7e2049295da49a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 677424231128400155, guid: d67bdaf91681efd41a7e2049295da49a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 677424231128400155, guid: d67bdaf91681efd41a7e2049295da49a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8737178801887976327, guid: d67bdaf91681efd41a7e2049295da49a, type: 3}
-      propertyPath: m_Name
-      value: ScaleCounter
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d67bdaf91681efd41a7e2049295da49a, type: 3}
 --- !u!224 &7175220534488967192
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22272,11 +22525,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -420674393
-      Data2: 1251492708
-      Data3: 518574501
-      Data4: 2087934572
-    Path: event:/SFX/UI/UI_Click
+      Data1: -523575138
+      Data2: 1146289498
+      Data3: -1058635634
+      Data4: 1179516591
+    Path: event:/SFX/UI/UI_ExitGame
   Event: 
   PlayEvent: 0
   StopEvent: 0
@@ -22516,6 +22769,49 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8327313813307722839}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8327313813307722839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 201823646081876155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 667056334
+      Data2: 1183534345
+      Data3: -485628999
+      Data4: -540097525
+    Path: event:/SFX/UI/UI_CardDiscardSelect
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!224 &8426653117853195933
 RectTransform:
   m_ObjectHideFlags: 0
