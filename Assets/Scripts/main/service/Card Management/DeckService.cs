@@ -44,24 +44,11 @@ namespace main.service.Card_Management
             Assert.IsTrue(deck.Pile.Count > 0, "Should never try to draw when the deck is empty. " +
                                                 "Classes should check this first");
 
-            var topCard = deck.Pile.Pop();
+            var topCard = deck.Pile.First();
+            deck.Pile.RemoveFirst();
             LogInfo($"Drew '{topCard}' as the top card");
 
             return topCard;
-        }
-
-        /// <summary>
-        /// Removes the first occurence of the card to remove and adds the card that should be added,
-        /// and then shuffles the deck
-        /// </summary>
-        public void ExchangeCardForAnother([NotNull] Card cardToRemove, [NotNull] Card cardToAdd)
-        {
-            LogInfo($"Removing card '{cardToRemove}' and adding card '{cardToAdd}'");
-            var initialSize = deck.Pile.Count;
-            
-            // TODO
-            
-            Assert.AreEqual(initialSize, deck.Pile.Count);
         }
 
         /// <summary>
@@ -71,7 +58,12 @@ namespace main.service.Card_Management
         public void AddCard([NotNull] Card card)
         {
             LogInfo($"Added card '{card}' to the deck");
-            deck.Pile.Push(card);
+            deck.Pile.AddFirst(card);
+        }
+        
+        public void RemoveCard(Card card)
+        {
+            card.RemoveFrom(deck.Pile);
         }
 
         /// <summary>
@@ -98,7 +90,7 @@ namespace main.service.Card_Management
             var cards = new List<Card>(deck.Pile);
             deck.Pile.Clear();
             cards.Shuffle();
-            cards.ForEach(deck.Pile.Push);
+            cards.ForEach(card => deck.Pile.AddFirst(card));
         }
     }
 }

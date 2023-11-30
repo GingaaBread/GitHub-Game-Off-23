@@ -123,9 +123,40 @@ namespace main.service.Turn_System
             LogInfo($"Registered the selection made by the player. Removing card '{cardToRemoveFromDeck}'" +
                     $" and adding card '{cardToAddToDeck}'");
             
-            deckService.ExchangeCardForAnother(cardToRemoveFromDeck, cardToAddToDeck);
+            ExchangeCardForAnother(cardToRemoveFromDeck, cardToAddToDeck);
             
             OnCardsSwapped?.Invoke();
+        }
+        
+        /// <summary>
+        /// Removes the first occurence of the card to remove and adds the card that should be added,
+        /// and then shuffles the deck
+        /// </summary>
+        private void ExchangeCardForAnother([NotNull] Card cardToRemoveFromDeck, [NotNull] Card cardToAddToDeck)
+        {
+            LogInfo($"Removing card '{cardToRemoveFromDeck}' and adding card '{cardToAddToDeck}'");
+
+            var deckAndDiscardPileCards = deckService.ToList().Concat(discardPileService.ToList()).ToList();
+
+            var initialSize = deckAndDiscardPileCards.Count();
+
+            Assert.IsTrue(cardToRemoveFromDeck.IsWithin(deckAndDiscardPileCards));
+            Assert.IsTrue(cardToAddToDeck.IsWithin(cardPoolService.ToList()));
+
+            if (cardToRemoveFromDeck.IsWithin(deckService.ToList()))
+            {
+                deckService.RemoveCard(cardToRemoveFromDeck);
+            }
+            else
+            {
+                discardPileService.RemoveCard(cardToRemoveFromDeck);
+            }
+            cardPoolService.AddCard(cardToRemoveFromDeck);
+
+            cardPoolService.RemoveCard(cardToAddToDeck);
+            deckService.AddCard(cardToAddToDeck);
+            
+            Assert.AreEqual(initialSize, deckService.ToList().Concat(discardPileService.ToList()).Count());
         }
         
         /// <summary>

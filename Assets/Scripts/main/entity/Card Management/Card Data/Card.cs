@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using System.Linq;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace main.entity.Card_Management.Card_Data
 {
@@ -105,6 +107,21 @@ namespace main.entity.Card_Management.Card_Data
 
             var description = bobTheBuilder.ToString();
             return description[..^2];*/
+        }
+
+        public void RemoveFrom(ICollection<Card> cards)
+        {
+            Assert.IsTrue(IsWithin(cards), $"Attempted to remove {this} from {cards}, but it's not there.");
+            
+            cards.Remove(this);
+        }
+
+        public bool IsWithin(IEnumerable<Card> cards)
+        {
+            var matches = cards.Where(this.Equals).ToList();
+            Assert.IsTrue(matches.Count <= 1, 
+                $"Each Card should have a single instance, but {this} has multiple matches: {matches}");
+            return matches.Count == 1;
         }
     }
 }

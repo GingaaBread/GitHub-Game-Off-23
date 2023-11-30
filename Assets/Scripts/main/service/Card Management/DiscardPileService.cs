@@ -30,9 +30,14 @@ namespace main.service.Card_Management
         {
             LogInfo($"Discarding card '{card}'");
             
-            discardPile.Pile.Push(card);
+            discardPile.Pile.AddFirst(card);
             
             OnDiscard?.Invoke(card);
+        }
+        
+        public void RemoveCard(Card card)
+        {
+            card.RemoveFrom(discardPile.Pile);
         }
 
         /// <summary>
@@ -60,7 +65,7 @@ namespace main.service.Card_Management
         ///     Yields the discard pile as a list of cards
         /// </summary>
         /// <returns>The discard pile stack converted to a list</returns>
-        public List<Card> ToList()
+        public IEnumerable<Card> ToList()
         {
             return discardPile.Pile.ToList();
         }
