@@ -131,19 +131,17 @@ namespace main.view
 
         private void Render()
         {
-            _cardNameText.text = Card.Name;
+            Debug.Log("Redering card with multiplier " + Card.Multiplier);
+            if(Card.Multiplier < 2){
+                _cardNameText.text = Card.Name;
+            }
+            else{
+                _cardNameText.text = "x" + Card.Multiplier + " " + Card.Name;
+            }
             _cardClassText.text = Card.Class;
             _cardCostText.text = Card.TimeCost.ToString();
             _cardValueText.text = Card.Rarity.ToString();
             _cardDescriptionText.text = Card.Description();
-
-            if(Card.Multiplier < 2){
-                if(_cardMultiplierText)_cardMultiplierText.gameObject.SetActive(false);
-            }
-            else{
-                if(_cardMultiplierText)_cardMultiplierText.text = "x" + Card.Multiplier.ToString();
-                if(_cardMultiplierText)_cardMultiplierText.gameObject.SetActive(true);
-            }
 
             _cardIconSpriteImage.sprite = Card.IconSprite;
             _cardTypeSpriteImage.sprite = Card switch
