@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 407fcea2a3eb47509f5c7be0289d8bef, type: 3}
+  m_Name: Family Trade
+  m_EditorClassIdentifier: 
+  _cardName: Family Trade
+  _cardSprite: {fileID: 21300000, guid: 4823774bcecc3ee42b0f119906dd0f2c, type: 3}
+  _cardClass: 2
+  _cardRarity:
+    _rarity: 14
+  _unitTimeCost:
+    time: 4
+  _cardEffects:
+  - {fileID: 11400000, guid: 9d80a4e7457bc1348a0ded3d526e4d40, type: 2}

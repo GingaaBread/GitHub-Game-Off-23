@@ -4,12 +4,10 @@ using UnityEditor;
 
 public class EditorTools : EditorWindow
 {
-    [MenuItem("Foo/Bar", false, 0)]
-    static void Example()
+    [MenuItem("EditorTools/CreateNewGame", false, 0)]
+    private static void CreateNewGame()
     {
-        // ...
     }
-
 }
 
 #endif

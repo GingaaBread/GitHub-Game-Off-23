@@ -1,0 +1,318 @@
+<mxfile host="Electron" modified="2023-11-05T01:05:19.082Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.1 Chrome/112.0.5615.204 Electron/24.6.1 Safari/537.36" etag="GHi6Fh7KkZ2U_cD83ymz" version="21.6.1" type="device">
+  <diagram name="Seite-1" id="FECViLs3gVJEnPOD-Wot">
+    <mxGraphModel dx="2695" dy="2354" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-1" target="NTeuZrHZ3xTOjQbzIy2f-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-1" value="Start Game" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="110" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-2" target="NTeuZrHZ3xTOjQbzIy2f-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-2" value="Load Starter Deck &amp;amp;&lt;br&gt;remove those cards&lt;br&gt;from card pool" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-3" target="NTeuZrHZ3xTOjQbzIy2f-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-3" value="Shuffle Deck" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="560" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-7" target="NTeuZrHZ3xTOjQbzIy2f-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-7" value="Draw 5 cards" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="790" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-9" target="NTeuZrHZ3xTOjQbzIy2f-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-13" value="Yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="NTeuZrHZ3xTOjQbzIy2f-12">
+          <mxGeometry x="-0.2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-9" target="NTeuZrHZ3xTOjQbzIy2f-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-16" value="No" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="NTeuZrHZ3xTOjQbzIy2f-15">
+          <mxGeometry x="-0.2333" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-9" value="Card has&lt;br&gt;been played?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="40" width="150" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-11" target="NTeuZrHZ3xTOjQbzIy2f-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-11" value="Discard It Right&lt;br&gt;Away" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-14" target="NTeuZrHZ3xTOjQbzIy2f-28">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-14" value="Discard It&lt;br&gt;After Turn" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1015" y="180" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-17" target="NTeuZrHZ3xTOjQbzIy2f-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-114" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-17" target="NTeuZrHZ3xTOjQbzIy2f-50">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-17" value="Apply Immediate&lt;br&gt;Effects" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1420" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-19" value="Example: Time Added" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="18" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-20" target="NTeuZrHZ3xTOjQbzIy2f-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-20" value="Count End-Of-Turn Effects" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1600" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-21" value="Example: 4 Scaling Effects" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1575" y="18" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-74" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-23" target="NTeuZrHZ3xTOjQbzIy2f-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-23" value="End Turn" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1770" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-75" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-25" target="NTeuZrHZ3xTOjQbzIy2f-65">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-25" value="Apply End Of Turn&lt;br&gt;Effects" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1770" y="180" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-28" target="NTeuZrHZ3xTOjQbzIy2f-30">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-28" value="Search lowest rarity cards in player deck" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="790" y="180" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-30" target="NTeuZrHZ3xTOjQbzIy2f-32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-30" value="Randomly select&lt;br&gt;three out of these from the deck" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="560" y="180" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-32" target="NTeuZrHZ3xTOjQbzIy2f-35">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-32" value="Calculate maximum&lt;br&gt;rarity possible this turn" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="180" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-33" value="Example: Turn 3, max rarity: 3" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="324" y="248" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-35" target="NTeuZrHZ3xTOjQbzIy2f-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-35" value="Randomly select&lt;br&gt;three out of these from the card pool" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="110" y="180" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-37" target="NTeuZrHZ3xTOjQbzIy2f-39">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-112" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;shape=flexArrow;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-37" target="NTeuZrHZ3xTOjQbzIy2f-111">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-37" value="The player selects one of each prior selections X, Y" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="110" y="320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-39" target="NTeuZrHZ3xTOjQbzIy2f-41">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-39" value="Remove X from deck&amp;nbsp;&amp;nbsp;" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-41" target="NTeuZrHZ3xTOjQbzIy2f-42">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-41" value="Add X to card pool" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="560" y="320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-42" target="NTeuZrHZ3xTOjQbzIy2f-43">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-42" value="Remove Y from&lt;br&gt;card pool" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="780" y="320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-58" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-43" target="NTeuZrHZ3xTOjQbzIy2f-50">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-43" value="Add Y to deck" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1015" y="320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-53" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-50" target="NTeuZrHZ3xTOjQbzIy2f-52">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-54" value="Yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="NTeuZrHZ3xTOjQbzIy2f-53">
+          <mxGeometry x="-0.0384" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-56" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-50" target="NTeuZrHZ3xTOjQbzIy2f-55">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-57" value="No" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="NTeuZrHZ3xTOjQbzIy2f-56">
+          <mxGeometry x="-0.1956" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-50" value="Are there undrawn&lt;br&gt;cards &amp;gt;= number&lt;br&gt;of cards to draw&lt;br&gt;next turn?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="270" width="240" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-52" target="NTeuZrHZ3xTOjQbzIy2f-61">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-52" value="Shuffle Undrawn Cards Deck&amp;nbsp;" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1600" y="320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-60" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-55" target="NTeuZrHZ3xTOjQbzIy2f-59">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-55" value="Guarantee drawing all undrawn cards" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="525" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-63" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-59" target="NTeuZrHZ3xTOjQbzIy2f-61">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-59" value="Shuffle dicard pile back into deck" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1600" y="525" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-64" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-61" target="NTeuZrHZ3xTOjQbzIy2f-9">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1990" y="460" />
+              <mxPoint x="1990" y="-90" />
+              <mxPoint x="1075" y="-90" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-61" value="Redraw&lt;br&gt;required amount from deck" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1770" y="430" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-77" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-65" target="NTeuZrHZ3xTOjQbzIy2f-69">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1650" y="268" />
+              <mxPoint x="1650" y="288" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-78" value="Yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="NTeuZrHZ3xTOjQbzIy2f-77">
+          <mxGeometry x="0.1086" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-81" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-65" target="NTeuZrHZ3xTOjQbzIy2f-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-82" value="No" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="NTeuZrHZ3xTOjQbzIy2f-81">
+          <mxGeometry x="0.0508" relative="1" as="geometry">
+            <mxPoint x="-77" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-65" value="Two turns with no&lt;br&gt;fish scaled or was&lt;br&gt;this round 20?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1560" y="151.67000000000002" width="175" height="116.67" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-84" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-69" target="NTeuZrHZ3xTOjQbzIy2f-83">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-69" value="End Run" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2200" y="240" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-86" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-83" target="NTeuZrHZ3xTOjQbzIy2f-85">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-83" value="Player Views&lt;br&gt;Starter Deck" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="2200" y="400" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-88" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-85" target="NTeuZrHZ3xTOjQbzIy2f-87">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-85" value="Player Views&lt;br&gt;All Cards That Have&lt;br&gt;Been Added This Run" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="2200" y="525" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-90" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-87" target="NTeuZrHZ3xTOjQbzIy2f-89">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-87" value="Player Can Select&lt;br&gt;0-3 Cards From&lt;br&gt;Each Pool" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="2200" y="640" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-92" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NTeuZrHZ3xTOjQbzIy2f-89" target="NTeuZrHZ3xTOjQbzIy2f-91">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-89" value="Replace selected ones from deck with the one from pool" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="2200" y="760" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-91" value="Save this new deck as the new &quot;starter&quot; deck" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="2200" y="870" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-94" value="Card Pool" style="shape=card;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="-160" width="80" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-95" value="Starter Deck" style="shape=card;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="-160" width="80" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-96" value="Elapsed&lt;br&gt;Turns" style="shape=card;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="324" y="-160" width="80" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-97" value="Number of&amp;nbsp;&lt;br&gt;Fish Scaled" style="shape=card;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="430" y="-160" width="80" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-99" value="Remaining&lt;br&gt;Time" style="shape=card;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="-160" width="80" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-100" value="Card Stuff" style="shape=card;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="630" y="-160" width="80" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-101" value="Discard Pile" style="shape=card;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="730" y="-160" width="80" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-102" value="1" style="shape=card;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="485" width="80" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-103" value="2" style="shape=card;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="485" width="80" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-104" value="3" style="shape=card;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="480" width="80" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-105" value="Hand" style="shape=card;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="830" y="-160" width="80" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-106" value="Fish Has Been Scaled&lt;br&gt;This or Last&lt;br&gt;Turn" style="shape=card;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="930" y="-160" width="80" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-107" value="Card Pool: All cards not in the deck" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="305" y="18" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-108" value="7" style="shape=card;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="485" width="80" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-109" value="43" style="shape=card;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="500" width="80" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-110" value="2" style="shape=card;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="90" y="520" width="80" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-111" value="Cards Added&lt;br&gt;This Run" style="shape=card;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="-160" width="80" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="NTeuZrHZ3xTOjQbzIy2f-113" value="Number Of Cards&lt;br&gt;To Draw&lt;br&gt;Next Turn" style="shape=card;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="-160" width="80" height="100" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

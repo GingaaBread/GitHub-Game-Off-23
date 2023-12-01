@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 407fcea2a3eb47509f5c7be0289d8bef, type: 3}
+  m_Name: Fishmonger
+  m_EditorClassIdentifier: 
+  _cardName: Fishmonger
+  _cardSprite: {fileID: 21300000, guid: 4a992976325f82f4bbb1779cc9d3ea04, type: 3}
+  _cardClass: 1
+  _cardRarity:
+    _rarity: 6
+  _unitTimeCost:
+    time: 2
+  _cardEffects:
+  - {fileID: 11400000, guid: c5ac517a4ab47184482d575be954e27d, type: 2}
+  - {fileID: 11400000, guid: dbcb14e6a93328a46b6f90245e09abaa, type: 2}

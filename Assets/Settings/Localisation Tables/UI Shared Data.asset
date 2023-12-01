@@ -14,7 +14,103 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TableCollectionName: UI
   m_TableCollectionNameGuidString: 458f363d33e43a64085a67eac6a883e8
-  m_Entries: []
+  m_Entries:
+  - m_Id: 32622804664606720
+    m_Key: exit-menu-title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32623037012271104
+    m_Key: exit-menu-prompt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32625606321266688
+    m_Key: exit-confirmation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32625687543963648
+    m_Key: exit-abort
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32679965415464960
+    m_Key: game-over-title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32680177651441664
+    m_Key: game-over-won-prompt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32680232626184192
+    m_Key: game-over-lost-prompt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32680637317799936
+    m_Key: game-over-play-again
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32680812299968512
+    m_Key: game-over-exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33074189000531968
+    m_Key: end-turn-button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33338286682169344
+    m_Key: warning-time
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33397784025260032
+    m_Key: card-swap-remove
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33397819857199104
+    m_Key: card-swap-add
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33398068415848448
+    m_Key: confirmation-text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33417566388772864
+    m_Key: menu-play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33417619652239360
+    m_Key: menu-settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33417659259052032
+    m_Key: menu-credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33417689458040832
+    m_Key: menu-exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34462489418424320
+    m_Key: settings-menu-title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34462524340199424
+    m_Key: settings-mute-music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34462583437942784
+    m_Key: settings-mute-sounds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34462618309386240
+    m_Key: settings-enable-camera-follow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34466130946711552
+    m_Key: settings-save-and-exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34466168540258304
+    m_Key: settings-reset
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

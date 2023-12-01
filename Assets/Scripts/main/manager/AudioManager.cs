@@ -1,12 +1,10 @@
+using FMODUnity;
+using UnityEngine;
+
 namespace Core
 {
-    using FMODUnity;
-    using UnityEngine;
-    using UnityEngine.Assertions;
-
     public class AudioManager : MonoBehaviour
     {
-
         private void Awake()
         {
             DontDestroyOnLoad(this);
@@ -14,20 +12,13 @@ namespace Core
 
         public static void UpdateBus()
         {
-            var bus = RuntimeManager.GetBus("bus:/");
-            if (GameSettingsManager.muteAudio)
-            {
-                bus.setVolume(0f);
-            }
-            else
-            {
-                Assert.IsTrue(GameSettingsManager.volumeStep >= 1 &&
-                    GameSettingsManager.volumeStep <= 10,
-                    GameSettingsManager.volumeStep.ToString());
+            var musicBus = RuntimeManager.GetBus("bus:/MUSIC");
+            musicBus.setVolume(GameSettingsManager.muteMusic ? 0f : 1f);
 
-                bus.setVolume(0.1f * GameSettingsManager.volumeStep);
-            }
+            var soundsBus = RuntimeManager.GetBus("bus:/SFX");
+            var uiBus = RuntimeManager.GetBus("bus:/UI");
+            soundsBus.setVolume(GameSettingsManager.muteSounds ? 0f : 1f);
+            uiBus.setVolume(GameSettingsManager.muteSounds ? 0f : 1f);
         }
-
     }
 }

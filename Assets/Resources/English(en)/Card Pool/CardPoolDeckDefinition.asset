@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e092ae2f648429b9496ce1457d2a54d, type: 3}
+  m_Name: CardPoolDeckDefinition
+  m_EditorClassIdentifier: 
+  cardCopiesList:
+  - card: {fileID: 11400000, guid: f6ead009dadb3784d8e86a3102abb0ad, type: 2}
+    numberOfCopies: 7
+  - card: {fileID: 11400000, guid: 9facdf6f9a64d8a48a9198ea06675990, type: 2}
+    numberOfCopies: 4
+  - card: {fileID: 11400000, guid: f512c96b30b6dcf488d9b80a4eb67dbd, type: 2}
+    numberOfCopies: 3
+  - card: {fileID: 11400000, guid: f7243891fa0c15b4c9bae7b264bf81da, type: 2}
+    numberOfCopies: 5
+  - card: {fileID: 11400000, guid: f73765e8c37b7e04785980c9c7f5f007, type: 2}
+    numberOfCopies: 4
+  - card: {fileID: 11400000, guid: c201b05d8b9e2b74ebda469e436b0507, type: 2}
+    numberOfCopies: 3
+  - card: {fileID: 11400000, guid: b858b0c8bbdd9e94e9992ab02d2c1e94, type: 2}
+    numberOfCopies: 3
+  - card: {fileID: 11400000, guid: cdf8ad44caee8db47baedf715fb2eab7, type: 2}
+    numberOfCopies: 3
+  - card: {fileID: 11400000, guid: e2f806d2f13ac9b4193e19ec427a2201, type: 2}
+    numberOfCopies: 5
+  - card: {fileID: 11400000, guid: f58dc5092635fa14fb40c62ad99dea9a, type: 2}
+    numberOfCopies: 4
+  - card: {fileID: 11400000, guid: b1829a43ada2be44684adb0026d62edd, type: 2}
+    numberOfCopies: 10
+  - card: {fileID: 11400000, guid: 0e9defadcf5eb284b9856a6842242c26, type: 2}
+    numberOfCopies: 10
+  - card: {fileID: 11400000, guid: d1f73b5abc92ad14288cc6177345943f, type: 2}
+    numberOfCopies: 4
+  - card: {fileID: 11400000, guid: cf36970083af52d42acda5a67d56dc34, type: 2}
+    numberOfCopies: 5
+  - card: {fileID: 11400000, guid: c8cc84135928f92439912f42f3d10c3a, type: 2}
+    numberOfCopies: 3
+  - card: {fileID: 11400000, guid: 6228ebccf5a074f499eb3a26eb6831d6, type: 2}
+    numberOfCopies: 5
+  - card: {fileID: 11400000, guid: aca224ede5cef584e991d80cdd80877a, type: 2}
+    numberOfCopies: 6
+  - card: {fileID: 11400000, guid: 9030b5ad8b5a97542bebe8497109b14f, type: 2}
+    numberOfCopies: 3
+  - card: {fileID: 11400000, guid: b845a6ea40e64404fbb3453dd6358f39, type: 2}
+    numberOfCopies: 9
+  - card: {fileID: 11400000, guid: edf73bbede5136649b5f3a6193887983, type: 2}
+    numberOfCopies: 4
