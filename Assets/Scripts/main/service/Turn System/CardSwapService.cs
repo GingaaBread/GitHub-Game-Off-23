@@ -61,15 +61,12 @@ namespace main.service.Turn_System
                 .ToList()
                 .Concat(discardPileService.ToList())
                 .Distinct(new CardComparer())
-                .Where(card => card.Rarity <= maximumRarity - 2)
                 .OrderBy(_ => random.Next())
                 .Take(3)
                 .ToList();
 
             // In any case, there should definitely be three elements now
-            Assert.IsNotNull(finalResult[0]);
-            Assert.IsNotNull(finalResult[1]);
-            Assert.IsNotNull(finalResult[2]);
+            Assert.AreEqual(3, finalResult.Count, "The only available cards are " + string.Join(", ", finalResult));
 
             LogInfo("The three random cards in both piles up to current rarity - 2 are: " +
                     string.Join(",", finalResult));
@@ -78,15 +75,13 @@ namespace main.service.Turn_System
             var selectedCards = cardPoolService
                 .ToList()
                 .Distinct(new CardComparer())
-                .Where(card => card.Rarity <= maximumRarity)
+                .Where(card => card.Rarity <= maximumRarity - 1)
                 .OrderBy(_ => random.Next())
                 .Take(3)
                 .ToList();
 
             // Verifies the game integrity, there should be exactly three cards at this point
-            Assert.IsNotNull(selectedCards[0]);
-            Assert.IsNotNull(selectedCards[1]);
-            Assert.IsNotNull(selectedCards[2]);
+            Assert.AreEqual(3, selectedCards.Count);
 
             // If the player would be offered the same 3 card pool cards two turns in a row, randomly swap one of
             // the offered card pool cards with another type (either of equal rarity or the next highest rarity).
@@ -113,9 +108,11 @@ namespace main.service.Turn_System
 
             LogInfo("Now waiting for the player to select one card to exchange");
             LogInfo("Triggering the OnCardSwap event");
-            OnCardSwapOptions.Invoke(finalResult, selectedCards);
 
-            // TODO remove player give choice from card pool
+            Assert.AreEqual(3, finalResult.Count, "There should be 3 cards");
+            Assert.AreEqual(3, selectedCards.Count, "There should be 3 cards");
+
+            OnCardSwapOptions.Invoke(finalResult, selectedCards);
 
             LogInfo("Handled the card swap");
         }

@@ -35,6 +35,9 @@ namespace main.infrastructure
                 for (var i = 0; i < numberOfCopiesToAdd; i++)
                 {
                     var card = ctx.Container.ResolveId<Card>(cardCopies.Card.Name);
+                    var cardEffects = new List<CardEffect>();
+                    card.CardEffects.ForEach(effect => cardEffects.Add(ctx.Container.ResolveId<CardEffect>(effect)));
+                    card.CardEffects = cardEffects;
                     cards.Add(card);
                 }
             }

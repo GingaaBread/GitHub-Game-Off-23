@@ -22,10 +22,16 @@ namespace main.view
 
         private readonly List<CardInHandContainer> cardInHandContainers = new();
         private int _drawOffset;
-        private DiscardPileService discardPileService;
 
         private PlayerHandService playerHandService;
-        private TurnService turnService;
+        private DiscardPileService discardPileService;
+
+        [Inject]
+        public void Construct(PlayerHandService playerHandService, DiscardPileService discardPileService)
+        {
+            this.playerHandService = playerHandService;
+            this.discardPileService = discardPileService;
+        }
 
         private void OnEnable()
         {
@@ -39,15 +45,6 @@ namespace main.view
         {
             playerHandService.OnCardDrawn.RemoveListener(RenderNewCard);
             discardPileService.OnDiscard -= RemoveCard;
-        }
-
-        [Inject]
-        public void Construct(PlayerHandService playerHandService, DiscardPileService discardPileService,
-            TurnService turnService)
-        {
-            this.playerHandService = playerHandService;
-            this.discardPileService = discardPileService;
-            this.turnService = turnService;
         }
 
         public void IncreaseSpacing()
@@ -83,7 +80,7 @@ namespace main.view
             _drawOffset--;
 
             _cardDrawEvent.Play();
-            container.CreateChild(cardEntity, this, playerHandService, turnService);
+            container.CreateChild(cardEntity, this);
         }
 
         private void RemoveCard(Card card)

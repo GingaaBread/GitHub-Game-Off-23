@@ -14,8 +14,11 @@ namespace main.infrastructure
         {
             cardEffects.ForEach(cardEffect =>
             {
-                Container.BindInstance(cardEffect);
-                Container.QueueForInject(cardEffect);
+                Container.Bind<CardEffect>()
+                    .WithId(cardEffect)
+                    .To(cardEffect.GetType())
+                    .FromNewScriptableObject(cardEffect)
+                    .AsTransient();
             });
         }
     }

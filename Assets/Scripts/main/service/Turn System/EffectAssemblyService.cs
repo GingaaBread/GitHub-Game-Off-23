@@ -19,9 +19,9 @@ namespace main.service.Turn_System
         /// </summary>
         [NotNull] private readonly EffectAssembly effectAssembly;
 
-        public UnityEvent OnEffectsWereExecuted = new();
+        public readonly UnityEvent OnEffectsWereExecuted = new();
 
-        public UnityEvent<int> OnScalePreviewHasChanged = new();
+        public readonly UnityEvent<int> OnScalePreviewHasChanged = new();
 
         public EffectAssemblyService([NotNull] EffectAssembly effectAssembly)
         {

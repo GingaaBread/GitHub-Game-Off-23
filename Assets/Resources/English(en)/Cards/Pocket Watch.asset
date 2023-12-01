@@ -18,6 +18,8 @@ MonoBehaviour:
   _cardRarity:
     _rarity: 12
   _unitTimeCost:
-    time: 5
-  _cardEffects: []
+    time: 0
+  _cardEffects:
+  - {fileID: 11400000, guid: 79b69d08acb4a3844b403f8bcbe727de, type: 2}
+  - {fileID: 11400000, guid: b64b07dc41136e94192217f6f70508b6, type: 2}
   _amountOfTurnsToLast: 4

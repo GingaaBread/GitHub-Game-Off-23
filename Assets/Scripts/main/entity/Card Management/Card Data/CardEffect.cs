@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace main.entity.Card_Management.Card_Data
@@ -14,6 +15,8 @@ namespace main.entity.Card_Management.Card_Data
 
         public bool IsEndTurnEffect => isEndTurnEffect;
 
+        public abstract event Action OnEffectUpdated;
+
         /// <summary>
         ///     Determines the behaviour of the card effect.
         ///     An example execution could be a card effect that prints a message to the console.
@@ -22,5 +25,11 @@ namespace main.entity.Card_Management.Card_Data
         ///     Debug.Log, etc.
         /// </summary>
         public abstract void Execute();
+
+        public abstract void MultiplyEffect(int multiplier);
+
+        protected abstract void ResetEffect();
+        
+        public abstract string GetDescription();
     }
 }

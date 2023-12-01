@@ -7,6 +7,7 @@ using main.service.Turn_System;
 using main.view.Canvas;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Zenject;
 
 namespace main.view
 {
@@ -28,22 +29,31 @@ namespace main.view
         private RectTransform _childRectTransform;
         private bool _hasEnoughTimeToPlay, _isInEndOfTurn;
         private CardPlayState _playState;
-        private PlayerHandService playerHandService;
-
+        
+        public CardView CardView { get; private set; }
+        
         private PlayerHandView playerHandView;
+        
+        private PlayerHandService playerHandService;
         private TurnService turnService;
 
-        public CardView CardView { get; private set; }
-
-        private void OnEnable()
+        [Inject]
+        public void Construct(PlayerHandService playerHandService, TurnService turnService)
         {
-            // Should only subscribe when the card object is set to active, NOT on start
-            playerHandService?.OnTimeUnitChange.AddListener(SetUsabilityColourOfCardView);
+            this.playerHandService = playerHandService;
+            this.turnService = turnService;
         }
-
-        private void OnDisable()
+        
+        public void Start()
         {
-            playerHandService?.OnTimeUnitChange.RemoveListener(SetUsabilityColourOfCardView);
+            turnService.OnTurnRemainingTimeChanged += SetUsabilityColourOfCardView;
+            turnService.OnBeforeEndOfTurn.AddListener(DisableOnEndOfTurn);
+            turnService.OnNewTurnStart.AddListener(EnableOnNewTurn);
+        }
+        
+        public void OnDestroy()
+        {
+            turnService.OnTurnRemainingTimeChanged -= SetUsabilityColourOfCardView;
             turnService.OnBeforeEndOfTurn.RemoveListener(DisableOnEndOfTurn);
             turnService.OnNewTurnStart.RemoveListener(EnableOnNewTurn);
         }
@@ -134,26 +144,16 @@ namespace main.view
             _isInEndOfTurn = false;
         }
 
-        private void SetUsabilityColourOfCardView(int _)
+        private void SetUsabilityColourOfCardView()
         {
             CardView.ChangeSelection(playerHandService.CardHasEnoughTime(CardView.Card)
                 ? CardPlayState.IDLE
                 : CardPlayState.UNPLAYABLE);
         }
 
-        public void CreateChild(
-            [NotNull] Card cardToContain,
-            [NotNull] PlayerHandView callback,
-            [NotNull] PlayerHandService playerHandService,
-            [NotNull] TurnService turnService)
+        public void CreateChild([NotNull] Card cardToContain, [NotNull] PlayerHandView callback)
         {
-            this.playerHandService = playerHandService;
-            this.turnService = turnService;
             playerHandView = callback;
-
-            playerHandService.OnTimeUnitChange.AddListener(SetUsabilityColourOfCardView);
-            turnService.OnBeforeEndOfTurn.AddListener(DisableOnEndOfTurn);
-            turnService.OnNewTurnStart.AddListener(EnableOnNewTurn);
 
             var newCardView = Instantiate(_cardViewPrefab, transform);
             CardView = newCardView;
@@ -163,7 +163,7 @@ namespace main.view
 
             newCardView.Initialize(cardToContain);
             newCardView.HandleDraw(transform);
-            SetUsabilityColourOfCardView(-1);
+            SetUsabilityColourOfCardView();
 
             _playState = CardPlayState.IDLE;
         }

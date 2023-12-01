@@ -1,4 +1,5 @@
 using System;
+using main.entity.Card_Management.Card_Data;
 using main.entity.Turn_System;
 using main.service.Card_Management;
 using UnityEngine.Events;
@@ -8,21 +9,21 @@ namespace main.service.Turn_System
 {
     public class TurnService : Service, IInitializable, IDisposable
     {
+        private readonly Turn turn;
+        private readonly PlayerHandService playerHandService;
+        private readonly GameService gameService;
         private readonly CardSwapService cardSwapService;
         private readonly EffectAssemblyService effectAssemblyService;
-        private readonly GameService gameService;
+        
         public readonly UnityEvent OnBeforeEndOfTurn = new();
-
         public readonly UnityEvent OnNewTurnStart = new();
-
         /// <summary>
         ///     Triggered once the turn number is increased when a new turn is started.
         ///     It uses the current turn number as its argument.
         /// </summary>
         public readonly UnityEvent<int> OnTurnNumberIncreased = new();
-
-        private readonly PlayerHandService playerHandService;
-        private readonly Turn turn;
+        
+        public event Action OnTurnRemainingTimeChanged;
 
         public TurnService
         (
@@ -39,17 +40,19 @@ namespace main.service.Turn_System
             this.cardSwapService = cardSwapService;
             this.effectAssemblyService = effectAssemblyService;
         }
+        
+        public void Initialize()
+        {
+            cardSwapService.OnCardsSwapped += StartTurn;
+            playerHandService.OnCardPlayed += OnCardPlayed;
+
+            StartTurn();
+        }
 
         public void Dispose()
         {
             cardSwapService.OnCardsSwapped -= StartTurn;
-        }
-
-        public void Initialize()
-        {
-            cardSwapService.OnCardsSwapped += StartTurn;
-
-            StartTurn();
+            playerHandService.OnCardPlayed -= OnCardPlayed;
         }
 
         public void StartTurn()
@@ -81,6 +84,19 @@ namespace main.service.Turn_System
             cardSwapService.HandleCardSwapOptions();
         }
 
+        public void IncreaseTime(int amount)
+        {
+            turn.RemainingTime.Time += amount;
+            OnTurnRemainingTimeChanged?.Invoke();
+        }
+
+        private void DecreaseTime(int amount)
+        {
+            turn.RemainingTime.Time -= amount;
+            LogInfo($"Removing {amount} time, time is now {turn.RemainingTime.Time}");
+            OnTurnRemainingTimeChanged?.Invoke();
+        }
+        
         private void IncrementTurnNumber()
         {
             turn.CurrentTurnNumber++;
@@ -94,7 +110,12 @@ namespace main.service.Turn_System
         {
             LogInfo("Restoring time to " + turn.InitialTime.Time);
             turn.RemainingTime.Time = turn.InitialTime.Time;
-            playerHandService.OnTimeUnitChange.Invoke(turn.RemainingTime.Time);
+            OnTurnRemainingTimeChanged?.Invoke();
+        }
+        
+        private void OnCardPlayed(Card card)
+        {
+            DecreaseTime(card.TimeCost);
         }
     }
 }

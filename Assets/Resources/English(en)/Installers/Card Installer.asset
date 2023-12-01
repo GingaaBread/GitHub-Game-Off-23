@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Card Installer
   m_EditorClassIdentifier: 
   cards:
-  - {fileID: 11400000, guid: 43e8fd5da34960b42b4647f3b66c3945, type: 2}
   - {fileID: 11400000, guid: f6ead009dadb3784d8e86a3102abb0ad, type: 2}
   - {fileID: 11400000, guid: 9facdf6f9a64d8a48a9198ea06675990, type: 2}
   - {fileID: 11400000, guid: f512c96b30b6dcf488d9b80a4eb67dbd, type: 2}
@@ -27,12 +26,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b1829a43ada2be44684adb0026d62edd, type: 2}
   - {fileID: 11400000, guid: 0e9defadcf5eb284b9856a6842242c26, type: 2}
   - {fileID: 11400000, guid: d1f73b5abc92ad14288cc6177345943f, type: 2}
-  - {fileID: 11400000, guid: e3c04980fca24184791522abedf2f2f6, type: 2}
   - {fileID: 11400000, guid: cf36970083af52d42acda5a67d56dc34, type: 2}
   - {fileID: 11400000, guid: c8cc84135928f92439912f42f3d10c3a, type: 2}
   - {fileID: 11400000, guid: 6228ebccf5a074f499eb3a26eb6831d6, type: 2}
   - {fileID: 11400000, guid: aca224ede5cef584e991d80cdd80877a, type: 2}
-  - {fileID: 11400000, guid: 7677970c3b5408541a9661da4c174d5d, type: 2}
   - {fileID: 11400000, guid: 9030b5ad8b5a97542bebe8497109b14f, type: 2}
   - {fileID: 11400000, guid: b845a6ea40e64404fbb3453dd6358f39, type: 2}
   - {fileID: 11400000, guid: edf73bbede5136649b5f3a6193887983, type: 2}

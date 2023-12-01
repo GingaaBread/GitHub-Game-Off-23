@@ -17,9 +17,9 @@ MonoBehaviour:
     numberOfCopies: 9
   - card: {fileID: 11400000, guid: f6ead009dadb3784d8e86a3102abb0ad, type: 2}
     numberOfCopies: 5
-  - card: {fileID: 11400000, guid: 7677970c3b5408541a9661da4c174d5d, type: 2}
-    numberOfCopies: 3
-  - card: {fileID: 11400000, guid: b845a6ea40e64404fbb3453dd6358f39, type: 2}
+  - card: {fileID: 11400000, guid: 9facdf6f9a64d8a48a9198ea06675990, type: 2}
     numberOfCopies: 2
+  - card: {fileID: 11400000, guid: b845a6ea40e64404fbb3453dd6358f39, type: 2}
+    numberOfCopies: 3
   - card: {fileID: 11400000, guid: 6228ebccf5a074f499eb3a26eb6831d6, type: 2}
     numberOfCopies: 1

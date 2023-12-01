@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -89,22 +91,38 @@ namespace main.entity.Card_Management.Card_Data
         ///     Yields the classes of the card as a string
         ///     TODO Use localisation key
         /// </summary>
-        public string Class => _cardClass.ToString();
+        public string CardClass => _cardClass.ToString();
 
-        public List<CardEffect> CardEffects => _cardEffects;
-
-        /// <summary>
-        ///     Yields the description of the card as a string
-        /// </summary>
-        public string Description()
+        public List<CardEffect> CardEffects
         {
-            return "No effect";
-            // TODO Use the card effect description instead of the "name" placeholder
-            /*var bobTheBuilder = new StringBuilder();
-            foreach (var cardEffect in _cardEffects) bobTheBuilder.Append(cardEffect.name + "\n\n");
+            get => _cardEffects;
+            set
+            { 
+                _cardEffects = value;
+                _cardEffects.ForEach(effect =>
+                {
+                    effect.OnEffectUpdated += NotifyDescriptionUpdated;
+                });
+            }
+        }
+
+        public event Action OnDescriptionUpdated;
+
+        private void OnDisable()
+        {
+            _cardEffects.ForEach(effect =>
+            {
+                effect.OnEffectUpdated -= NotifyDescriptionUpdated;
+            });
+        }
+
+        public string GetDescription()
+        {
+            var bobTheBuilder = new StringBuilder();
+            foreach (var cardEffect in _cardEffects) bobTheBuilder.Append(cardEffect.GetDescription() + "\n\n");
 
             var description = bobTheBuilder.ToString();
-            return description[..^2];*/
+            return description.Length > 0 ? description[..^2] : "No effect";
         }
 
         public void RemoveFrom(ICollection<Card> cards)
@@ -120,6 +138,16 @@ namespace main.entity.Card_Management.Card_Data
             Assert.IsTrue(matches.Count <= 1, 
                 $"Each Card should have a single instance, but {this} has multiple matches: {matches}");
             return matches.Count == 1;
+        }
+
+        public void MultiplyEffects(int multiplier)
+        {
+            _cardEffects.ForEach(effect => effect.MultiplyEffect(multiplier));
+        }
+
+        private void NotifyDescriptionUpdated()
+        {
+            OnDescriptionUpdated?.Invoke();
         }
     }
 }

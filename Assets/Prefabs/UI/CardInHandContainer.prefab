@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 440918667244453958}
   - component: {fileID: -8024770978960232758}
   - component: {fileID: -1567883482194788085}
+  - component: {fileID: 7444813825332310512}
   m_Layer: 5
   m_Name: CardInHandContainer
   m_TagString: Untagged
@@ -160,3 +161,16 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+--- !u!114 &7444813825332310512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7764285812833003360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 717a02054ef2699498e6bd4234fd7995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _containerSource: 0

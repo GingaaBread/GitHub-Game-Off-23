@@ -15,7 +15,7 @@ namespace main.entity.Card_Management.Card_Data
 
         public int GetHashCode(Card card)
         {
-            return card.GetHashCode();
+            return card.Name.GetHashCode();
         }
     }
 }

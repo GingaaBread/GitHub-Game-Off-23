@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardSprite: {fileID: 21300000, guid: 6b5208f8f0077bd468d815d92131b86a, type: 3}
   _cardClass: 0
   _cardRarity:
-    _rarity: 12
+    _rarity: 10
   _unitTimeCost:
     time: 4
   _cardEffects:

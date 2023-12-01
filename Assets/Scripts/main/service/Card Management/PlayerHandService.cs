@@ -1,4 +1,6 @@
-﻿using main.entity.Card_Management;
+﻿using System;
+using System.Linq;
+using main.entity.Card_Management;
 using main.entity.Card_Management.Card_Data;
 using main.entity.Turn_System;
 using main.service.Turn_System;
@@ -13,8 +15,10 @@ namespace main.service.Card_Management
     /// </summary>
     public class PlayerHandService : Service
     {
+        private readonly PlayerHand playerHand;
         private readonly DeckService deckService;
         private readonly DiscardPileService discardPileService;
+        private readonly Turn turn;
         private readonly EffectAssemblyService effectAssemblyService;
 
         /// <summary>
@@ -23,13 +27,15 @@ namespace main.service.Card_Management
         /// </summary>
         public readonly UnityEvent<Card> OnCardDrawn = new();
 
-        public readonly UnityEvent<int> OnTimeUnitChange = new();
+        public event Action<Card> OnCardPlayed;
 
-        private readonly PlayerHand playerHand;
-        private readonly Turn turn;
-
-        public PlayerHandService(PlayerHand playerHand, DeckService deckService, DiscardPileService discardPileService,
-            Turn turn, EffectAssemblyService effectAssemblyService)
+        public PlayerHandService
+        (
+            PlayerHand playerHand, 
+            DeckService deckService, 
+            DiscardPileService discardPileService,
+            Turn turn,
+            EffectAssemblyService effectAssemblyService)
         {
             this.playerHand = playerHand;
             this.deckService = deckService;
@@ -86,19 +92,13 @@ namespace main.service.Card_Management
                 return;
             }
 
-            LogInfo("Initial time before was " + turn.InitialTime.Time);
-            turn.RemainingTime.Time -= card.TimeCost;
+            OnCardPlayed?.Invoke(card);
             
-            LogInfo($"Removing {card.TimeCost} time, time is now {turn.RemainingTime.Time}");
-            OnTimeUnitChange.Invoke(turn.RemainingTime.Time);
-
-            LogInfo("Initial time after is " + turn.InitialTime.Time);
-
             LogInfo($"Playing card '{card}'");
 
-            card.CardEffects.ForEach(effectAssemblyService.AddEffect);
-
             playerHand.HandCards.Remove(card);
+            
+            card.CardEffects.ForEach(effectAssemblyService.AddEffect);
 
             discardPileService.Discard(card);
 
@@ -129,7 +129,8 @@ namespace main.service.Card_Management
         /// <param name="amount">The amount of cards to draw</param>
         private void DrawCardsFromDeck(int amount)
         {
-            for (var i = 0; i < amount; i++)
+            var actualAmount = Math.Min(amount, deckService.ToList().Count());
+            for (var i = 0; i < actualAmount; i++)
             {
                 var drawnCard = deckService.DrawFromTop();
                 playerHand.HandCards.Add(drawnCard);

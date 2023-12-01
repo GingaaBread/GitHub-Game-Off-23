@@ -1,4 +1,5 @@
-using main.service.Card_Management;
+using main.entity.Turn_System;
+using main.service.Turn_System;
 using TMPro;
 using UnityEngine;
 using Zenject;
@@ -9,27 +10,29 @@ namespace main.view
     {
         [SerializeField] private TMP_Text _currentTimeText;
 
-        private PlayerHandService playerHandService;
+        private TurnService turnService;
+        private Turn turn;
+        
+        [Inject]
+        public void Construct(TurnService turnService, Turn turn)
+        {
+            this.turnService = turnService;
+            this.turn = turn;
+        }
 
         private void OnEnable()
         {
-            playerHandService.OnTimeUnitChange.AddListener(UpdateCurrentTime);
+            turnService.OnTurnRemainingTimeChanged += UpdateCurrentTime;
         }
 
         private void OnDisable()
         {
-            playerHandService.OnTimeUnitChange.RemoveListener(UpdateCurrentTime);
+            turnService.OnTurnRemainingTimeChanged -= UpdateCurrentTime;
         }
 
-        [Inject]
-        public void Construct(PlayerHandService playerHandService)
+        private void UpdateCurrentTime()
         {
-            this.playerHandService = playerHandService;
-        }
-
-        private void UpdateCurrentTime(int currentTime)
-        {
-            _currentTimeText.text = currentTime.ToString();
+            _currentTimeText.text = turn.RemainingTime.Time.ToString();
         }
     }
 }

@@ -62,6 +62,12 @@ namespace main.view
         {
             Card = card;
             Render();
+            card.OnDescriptionUpdated += UpdateCardDescriptionText;
+        }
+
+        private void OnDisable()
+        {
+            Card.OnDescriptionUpdated -= UpdateCardDescriptionText;
         }
 
         private void HandlePotentialDraw()
@@ -104,9 +110,9 @@ namespace main.view
         public void PlaySound()
         {
             _baseCardPlayEvent.Play();
-            if (Card.Class.ToLower() == "knife") _knifeCardPlayEvent.Play();
-            else if (Card.Class.ToLower() == "prep") _prepCardPlayEvent.Play();
-            else if (Card.Class.ToLower() == "water") _waterCardPlayEvent.Play();
+            if (Card.CardClass.ToLower() == "knife") _knifeCardPlayEvent.Play();
+            else if (Card.CardClass.ToLower() == "prep") _prepCardPlayEvent.Play();
+            else if (Card.CardClass.ToLower() == "water") _waterCardPlayEvent.Play();
         }
 
         public void Discard()
@@ -142,10 +148,10 @@ namespace main.view
         private void Render()
         {
             _cardNameText.text = Card.Name;
-            _cardClassText.text = Card.Class;
+            _cardClassText.text = Card.CardClass;
             _cardCostText.text = Card.TimeCost.ToString();
             _cardValueText.text = Card.Rarity.ToString();
-            _cardDescriptionText.text = Card.Description();
+            _cardDescriptionText.text = Card.GetDescription();
 
             _cardIconSpriteImage.sprite = Card.IconSprite;
             _cardTypeSpriteImage.sprite = Card switch
@@ -170,6 +176,11 @@ namespace main.view
                     CardInHandContainer.CardPlayState.UNPLAYABLE => _unplayableColour,
                     _ => throw new NotImplementedException("Colour does not exist")
                 };
+        }
+        
+        private void UpdateCardDescriptionText()
+        {
+            _cardDescriptionText.text = Card.GetDescription();
         }
     }
 }
