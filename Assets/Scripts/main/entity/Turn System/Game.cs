@@ -31,7 +31,7 @@ namespace main.entity.Turn_System
         ///     This amount is increased everytime a fish is scaled.
         ///     After the <see cref="TurnsInAGame" />, if this value is not reached, it is game over.
         /// </summary>
-        public const int RequiredAmountOfFishToScaleToWin = 30;
+        public const int RequiredAmountOfFishToScaleToWin = 50;
 
         /// <summary>
         ///     Tracks the amount of fish that have been completely scaled by the player.

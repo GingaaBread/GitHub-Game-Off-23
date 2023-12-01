@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fabce96a2d108ea439587ea09501da4b, type: 3}
   m_Name: Draw Card Soak
   m_EditorClassIdentifier: 
-  amountOfCardsToDraw: 1
+  isEndTurnEffect: 0
+  amountOfCardsToDraw: 2

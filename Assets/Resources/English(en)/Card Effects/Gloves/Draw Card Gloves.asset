@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Draw Card Gloves
   m_EditorClassIdentifier: 
   isEndTurnEffect: 0
-  amountOfCardsToDraw: 5
+  amountOfCardsToDraw: 6
