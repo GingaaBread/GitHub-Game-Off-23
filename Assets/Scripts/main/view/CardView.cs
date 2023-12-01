@@ -19,7 +19,6 @@ namespace main.view
         [SerializeField] private TMP_Text _cardClassText;
         [SerializeField] private TMP_Text _cardDescriptionText;
         [SerializeField] private TMP_Text _cardCostText;
-        [SerializeField] private TMP_Text _cardValueText;
         [SerializeField] private Image _cardTypeSpriteImage;
         [SerializeField] private Image _cardIconSpriteImage;
         [SerializeField] private Image[] _selectionOutlineImages;
@@ -58,16 +57,16 @@ namespace main.view
             HandlePotentialDiscard();
         }
 
+        private void OnDisable()
+        {
+            Card.OnDescriptionUpdated -= UpdateCardDescriptionText;
+        }
+
         public void Initialize(Card card)
         {
             Card = card;
             Render();
             card.OnDescriptionUpdated += UpdateCardDescriptionText;
-        }
-
-        private void OnDisable()
-        {
-            Card.OnDescriptionUpdated -= UpdateCardDescriptionText;
         }
 
         private void HandlePotentialDraw()
@@ -150,7 +149,6 @@ namespace main.view
             _cardNameText.text = Card.Name;
             _cardClassText.text = Card.CardClass;
             _cardCostText.text = Card.TimeCost.ToString();
-            _cardValueText.text = Card.Rarity.ToString();
             _cardDescriptionText.text = Card.GetDescription();
 
             _cardIconSpriteImage.sprite = Card.IconSprite;
@@ -177,7 +175,7 @@ namespace main.view
                     _ => throw new NotImplementedException("Colour does not exist")
                 };
         }
-        
+
         private void UpdateCardDescriptionText()
         {
             _cardDescriptionText.text = Card.GetDescription();
