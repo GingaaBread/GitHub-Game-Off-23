@@ -40,6 +40,7 @@ namespace main.view
 
         private Vector3[] _bezierNodes;
         private float _bezierTargetCount;
+        private float desiredYOffset, desiredRotation;
         private bool _isBeingDiscarded, _isBeingDrawn;
 
         private Transform _transform, _parent;
@@ -85,7 +86,8 @@ namespace main.view
         {
             _transform.SetParent(_parent);
             yield return new WaitForEndOfFrame();
-            RectTransform.anchoredPosition = Vector3.zero;
+            RectTransform.anchoredPosition = Vector2.up * desiredYOffset;
+            transform.localRotation = Quaternion.Euler(0,0,desiredRotation);
         }
 
         private void HandlePotentialDiscard()
@@ -170,6 +172,24 @@ namespace main.view
                     CardInHandContainer.CardPlayState.UNPLAYABLE => _unplayableColour,
                     _ => throw new NotImplementedException("Colour does not exist")
                 };
+        }
+
+        public bool IsBeingDiscarded(){
+            return _isBeingDiscarded;
+        }
+
+        public bool IsBeingDrawn(){
+            return _isBeingDrawn;
+        }
+
+        public void ApplyRotation(float rotZ){
+            this.desiredRotation = rotZ;
+            transform.localRotation = Quaternion.Euler(0,0,rotZ);
+        }
+
+        public void ApplyOffset(float desiredYOffset){
+            this.desiredYOffset = desiredYOffset;
+            RectTransform.anchoredPosition = Vector2.up * desiredYOffset;
         }
     }
 }
