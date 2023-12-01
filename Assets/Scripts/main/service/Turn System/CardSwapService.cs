@@ -12,21 +12,11 @@ namespace main.service.Turn_System
 {
     public class CardSwapService : Service
     {
-        private readonly Game game;
-        private readonly DeckService deckService;
         private readonly CardPoolService cardPoolService;
+        private readonly DeckService deckService;
         private readonly DiscardPileService discardPileService;
-        private readonly Turn turn;
+        private readonly Game game;
 
-        public CardSwapService(Game game, DeckService deckService, CardPoolService cardPoolService, DiscardPileService discardPileService, Turn turn)
-        {
-            this.game = game;
-            this.deckService = deckService;
-            this.cardPoolService = cardPoolService;
-            this.discardPileService = discardPileService;
-            this.turn = turn;
-        }
-        
         /// <summary>
         ///     Triggered once the card swap has selected three cards from the players deck.
         ///     The player must choose one of these cards and remove it from the deck.
@@ -35,8 +25,20 @@ namespace main.service.Turn_System
         /// </summary>
         public readonly UnityEvent<List<Card>, List<Card>> OnCardSwapOptions = new();
 
+        private readonly Turn turn;
+
+        public CardSwapService(Game game, DeckService deckService, CardPoolService cardPoolService,
+            DiscardPileService discardPileService, Turn turn)
+        {
+            this.game = game;
+            this.deckService = deckService;
+            this.cardPoolService = cardPoolService;
+            this.discardPileService = discardPileService;
+            this.turn = turn;
+        }
+
         public event Action OnCardsSwapped;
-        
+
         public void HandleCardSwapOptions()
         {
             if (!CanSwapCards())
@@ -45,7 +47,7 @@ namespace main.service.Turn_System
                 OnCardsSwapped?.Invoke();
                 return;
             }
-            
+
             LogInfo("Game is still ongoing, therefore doing the card swap now");
 
             // If there are more than three cards sharing the least rarity, it should be randomised
@@ -117,20 +119,20 @@ namespace main.service.Turn_System
 
             LogInfo("Handled the card swap");
         }
-        
+
         public void RegisterCardSwapSelections([NotNull] Card cardToRemoveFromDeck, [NotNull] Card cardToAddToDeck)
         {
             LogInfo($"Registered the selection made by the player. Removing card '{cardToRemoveFromDeck}'" +
                     $" and adding card '{cardToAddToDeck}'");
-            
+
             ExchangeCardForAnother(cardToRemoveFromDeck, cardToAddToDeck);
-            
+
             OnCardsSwapped?.Invoke();
         }
-        
+
         /// <summary>
-        /// Removes the first occurence of the card to remove and adds the card that should be added,
-        /// and then shuffles the deck
+        ///     Removes the first occurence of the card to remove and adds the card that should be added,
+        ///     and then shuffles the deck
         /// </summary>
         private void ExchangeCardForAnother([NotNull] Card cardToRemoveFromDeck, [NotNull] Card cardToAddToDeck)
         {
@@ -144,21 +146,17 @@ namespace main.service.Turn_System
             Assert.IsTrue(cardToAddToDeck.IsWithin(cardPoolService.ToList()));
 
             if (cardToRemoveFromDeck.IsWithin(deckService.ToList()))
-            {
                 deckService.RemoveCard(cardToRemoveFromDeck);
-            }
             else
-            {
                 discardPileService.RemoveCard(cardToRemoveFromDeck);
-            }
             cardPoolService.AddCard(cardToRemoveFromDeck);
 
             cardPoolService.RemoveCard(cardToAddToDeck);
             deckService.AddCard(cardToAddToDeck);
-            
+
             Assert.AreEqual(initialSize, deckService.ToList().Concat(discardPileService.ToList()).Count());
         }
-        
+
         /// <summary>
         ///     Yields true if the system should swap cards or not.
         ///     During the first three turns, the system will NOT swap cards because there are too few low-rarity cards.
@@ -170,8 +168,9 @@ namespace main.service.Turn_System
             LogInfo($"Cards should only be swapped, starting in turn {game.TurnToStartSwappingCards}" +
                     $" until turn {game.TurnToStopSwappingCards}" +
                     $" and now is turn {turn.CurrentTurnNumber}");
-            
-            return turn.CurrentTurnNumber >= game.TurnToStartSwappingCards && turn.CurrentTurnNumber <= game.TurnToStopSwappingCards;
+
+            return turn.CurrentTurnNumber >= game.TurnToStartSwappingCards &&
+                   turn.CurrentTurnNumber <= game.TurnToStopSwappingCards;
         }
     }
 }

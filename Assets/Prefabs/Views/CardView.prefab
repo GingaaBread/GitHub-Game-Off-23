@@ -437,6 +437,9 @@ GameObject:
   - component: {fileID: 8960865704425693677}
   - component: {fileID: 2119321683219683838}
   - component: {fileID: 7353405812651201155}
+  - component: {fileID: 445959323360721637}
+  - component: {fileID: 7552749590211851255}
+  - component: {fileID: 7160519605415436942}
   m_Layer: 5
   m_Name: CardView
   m_TagString: Untagged
@@ -505,7 +508,10 @@ MonoBehaviour:
   _idleColour: {r: 1, g: 1, b: 1, a: 1}
   _playableColour: {r: 0.8666667, g: 0.9490196, b: 0.16862746, a: 1}
   _unplayableColour: {r: 1, g: 0.20392157, b: 0.3254902, a: 1}
-  _cardPlayEvent: {fileID: 2119321683219683838}
+  _baseCardPlayEvent: {fileID: 7160519605415436942}
+  _knifeCardPlayEvent: {fileID: 2119321683219683838}
+  _prepCardPlayEvent: {fileID: 445959323360721637}
+  _waterCardPlayEvent: {fileID: 7552749590211851255}
   _actionCardPanelSprite: {fileID: 21300000, guid: 7153b8dcd20316b4091c7ddbbcfefc9c, type: 3}
   _itemCardPanelSprite: {fileID: 21300000, guid: 63ca25c50a6cff6479f1cd37f8492ab9, type: 3}
 --- !u!114 &8960865704425693677
@@ -543,11 +549,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 18008038
-      Data2: 1260097628
-      Data3: 101568185
-      Data4: 1168289788
-    Path: event:/SFX/Cards/Card_Play
+      Data1: 1326902351
+      Data2: 1216011192
+      Data3: -177979226
+      Data4: -839734324
+    Path: event:/SFX/Cards/Card_PlayKnife
   Event: 
   PlayEvent: 0
   StopEvent: 0
@@ -580,6 +586,99 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &445959323360721637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2810235170236976100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -864716469
+      Data2: 1225597873
+      Data3: -2065888091
+      Data4: 1775520935
+    Path: event:/SFX/Cards/Card_PlayPrep
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &7552749590211851255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2810235170236976100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 316273083
+      Data2: 1258000098
+      Data3: -245875044
+      Data4: -1963031827
+    Path: event:/SFX/Cards/Card_PlayWater
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &7160519605415436942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2810235170236976100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 18008038
+      Data2: 1260097628
+      Data3: 101568185
+      Data4: 1168289788
+    Path: event:/SFX/Cards/Card_Play
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &3239918649176495416
 GameObject:
   m_ObjectHideFlags: 0

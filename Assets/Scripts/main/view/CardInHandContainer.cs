@@ -115,6 +115,7 @@ namespace main.view
                     break;
                 case CardPlayState.PLAYABLE:
                     playerHandView.IncreaseSpacing();
+                    CardView.PlaySound();
                     playerHandView.PlayCard(CardView.Card);
                     break;
                 case CardPlayState.IDLE:

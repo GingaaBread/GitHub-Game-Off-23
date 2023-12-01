@@ -26,11 +26,7 @@
 			<value>2</value>
 		</property>
 	</object>
-	<object class="MultibandEqEffect" id="{02538a26-c87a-473b-a8ca-0a9555b1746b}">
-		<property name="bypass">
-			<value>true</value>
-		</property>
-	</object>
+	<object class="MultibandEqEffect" id="{02538a26-c87a-473b-a8ca-0a9555b1746b}" />
 	<object class="MixerBusFader" id="{93621478-1067-4bca-9c53-fc6d7d738a70}" />
 	<object class="LoudnessMeter" id="{c527f825-da25-48fc-a12d-b86b12c3fc2e}">
 		<relationship name="excludedPlatforms">

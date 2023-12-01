@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7896401330409830820}
   - component: {fileID: 1742650562266363859}
   - component: {fileID: 4861744274909546075}
+  - component: {fileID: 6860271865403631233}
   m_Layer: 5
   m_Name: SlashImage
   m_TagString: Untagged
@@ -115,3 +116,34 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f490a2f847812a84594580d5b4324059, type: 3}
   - {fileID: 21300000, guid: a8b3f52898596a34eb26acf7d82f8b3d, type: 3}
   - {fileID: 21300000, guid: f8c71b21321105949a64840c8d2546ed, type: 3}
+--- !u!114 &6860271865403631233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2963746149554340894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -433238359
+      Data2: 1160158244
+      Data3: 555663027
+      Data4: -913851604
+    Path: event:/SFX/Fish/Fish_Scale
+  Event: 
+  PlayEvent: 11
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20

@@ -1,3 +1,4 @@
+using System.Collections;
 using main.service.Turn_System;
 using UnityEngine;
 using Zenject;
@@ -38,12 +39,17 @@ namespace main.view.Buttons
 
         private void Lock()
         {
-            if (_animator.GetCurrentAnimatorStateInfo(0).IsName("EndOfTurnLock")) _animator.Play("Idle");
             _animator.Play("EndOfTurnLock");
         }
 
         private void Unlock()
         {
+            StartCoroutine(DelayUnlock());
+        }
+
+        private IEnumerator DelayUnlock()
+        {
+            yield return new WaitForSeconds(1f);
             _animator.Play("EndOfTurnUnlock");
         }
     }

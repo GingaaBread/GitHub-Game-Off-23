@@ -26,7 +26,10 @@ namespace main.view
         [SerializeField] private Color _idleColour;
         [SerializeField] private Color _playableColour;
         [SerializeField] private Color _unplayableColour;
-        [SerializeField] private StudioEventEmitter _cardPlayEvent;
+        [SerializeField] private StudioEventEmitter _baseCardPlayEvent;
+        [SerializeField] private StudioEventEmitter _knifeCardPlayEvent;
+        [SerializeField] private StudioEventEmitter _prepCardPlayEvent;
+        [SerializeField] private StudioEventEmitter _waterCardPlayEvent;
 
         [Header("Item Types")] [SerializeField]
         private Sprite _actionCardPanelSprite;
@@ -98,10 +101,18 @@ namespace main.view
             _transform.position = Vector3.Lerp(m1, m2, _bezierTargetCount);
         }
 
+        public void PlaySound()
+        {
+            _baseCardPlayEvent.Play();
+            if (Card.Class.ToLower() == "knife") _knifeCardPlayEvent.Play();
+            else if (Card.Class.ToLower() == "prep") _prepCardPlayEvent.Play();
+            else if (Card.Class.ToLower() == "water") _waterCardPlayEvent.Play();
+        }
+
         public void Discard()
         {
             _isBeingDiscarded = true;
-            _cardPlayEvent.Play();
+
             _bezierTargetCount = 0f;
 
             _bezierNodes = new Vector3[3];
